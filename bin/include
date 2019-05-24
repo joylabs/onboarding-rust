@@ -1,0 +1,11 @@
+# vim: set filetype=sh:
+
+echo "--- RUNNING $0" `date`
+
+# Compose project name gets converted to something without dashes or underscores
+# by docker-compose
+BUILD_TAG=${BUILD_TAG:-$MKPROJ_APP_NAME}
+COMPOSE_PROJECT_NAME=${COMPOSE_PROJECT_NAME:-$BUILD_TAG}
+COMPOSE_PROJECT_NAME=${COMPOSE_PROJECT_NAME//-/}
+COMPOSE_PROJECT_NAME=$(echo "$COMPOSE_PROJECT_NAME" | tr '[:upper:]' '[:lower:]')
+export COMPOSE_PROJECT_NAME=${COMPOSE_PROJECT_NAME//_/}

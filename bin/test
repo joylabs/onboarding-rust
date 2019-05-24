@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -e
+
+echo -n "=> "
+rustc --version
+
+
+echo "=> Running clippy in $PWD"
+cargo clippy -- -D warnings
+
+echo "=> Running cargo test in $PWD"
+cargo test
+
+echo "=> $0 finished in $SECONDS sec"

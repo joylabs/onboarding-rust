@@ -1,0 +1,13 @@
+version: '3'
+services:
+  build:
+    build: .
+    command: tail -f /dev/null
+    environment:
+      - BUILD_NUMBER
+      - CARGO_HOME=/opt/joylabs/onboarding_rust/build/cache/.cargo
+      - CARGO_TARGET_DIR=/opt/joylabs/onboarding_rust/build/cache/target
+    volumes:
+      - .:/opt/joylabs/onboarding_rust:delegated
+    working_dir: /opt/joylabs/onboarding_rust
+    
