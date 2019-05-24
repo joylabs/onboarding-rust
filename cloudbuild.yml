@@ -1,0 +1,28 @@
+steps:
+- name: 'gcr.io/cloud-builders/gsutil'
+  entrypoint: 'bash'
+  args:
+    - '-c'
+    - |
+      if [ "$BRANCH_NAME" != "master" ] && gsutil -q stat gs://rust-dependencies/${REPO_NAME}-cache.tar.gz; then
+        gsutil cp gs://rust-dependencies/${REPO_NAME}-cache.tar.gz ./cache.tar.gz && \
+        tar zxf ./cache.tar.gz
+      fi
+
+- name: 'docker/compose:1.23.1'
+  args: ['build']
+
+- name: 'docker/compose:1.23.1'
+  args: ['run', 'build', 'bin/test']
+
+
+- name: 'gcr.io/cloud-builders/gsutil'
+  entrypoint: 'bash'
+  args:
+    - '-c'
+    - |
+      if [ "$BRANCH_NAME" == "master" ]; then
+        tar zcf ./cache.tar.gz build/ && \
+        gsutil -o GSUtil:parallel_composite_upload_threshold=50M cp ./cache.tar.gz gs://rust-dependencies/${REPO_NAME}-cache.tar.gz 
+      fi
+timeout: 2000s
