@@ -68,7 +68,7 @@ git push origin name_of_the_branch
 
   - [Cool terminal configuaration (Optional)](https://medium.com/the-code-review/make-your-terminal-more-colourful-and-productive-with-iterm2-and-zsh-11b91607b98c)
 
-
+  - [Find the Wallbreakers curriculum here](https://docs.google.com/document/d/1Vu910E7GVCmjwF77sXNT6dOBEJDDqhEM-yWN0cCGOZM/edit?usp=sharing)
 
 
 Find the Wallbreakers curriculum here
