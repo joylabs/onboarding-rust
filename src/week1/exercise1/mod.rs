@@ -1,3 +1,3 @@
-pub fn hello_world() -> i64 {
-    0
+pub fn exercise1(x: Vec<i64>) -> Vec<i64> {
+    x
 }
