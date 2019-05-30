@@ -1,9 +1,9 @@
 # onboarding-rust
 
 
-1.- [Create an SSH key on your local computer](https://help.github.com/en/enterprise/2.15/user/articles/adding-a-new-ssh-key-to-your-github-account)
+1.- [Create an SSH key on your local computer.](https://help.github.com/en/enterprise/2.15/user/articles/adding-a-new-ssh-key-to-your-github-account)
 
-2.- [Intsall git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+2.- [Check if you have git installed, if not install it:](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 ```
 git --version
 ```
