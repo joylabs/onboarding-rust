@@ -1,6 +1,6 @@
 # onboarding-rust
 
-### First review if you have set up your Joy Labs [programming configuration](https://honey.is/home/#post/778734)
+### First review if you have set up your Joy Labs [development setup](https://honey.is/home/#post/778734)
 
 1.- [Create an SSH key on your local computer.](https://help.github.com/en/enterprise/2.15/user/articles/adding-a-new-ssh-key-to-your-github-account)
 
