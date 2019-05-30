@@ -55,7 +55,7 @@ git push origin name_of_the_branch
 11.- On Github make a pull requeset of your branch and choose a peer to review it (try to choose someone different).
 
 
-
+### [Cool terminal configuaration (Optional)](https://medium.com/the-code-review/make-your-terminal-more-colourful-and-productive-with-iterm2-and-zsh-11b91607b98c)
 
 
 
