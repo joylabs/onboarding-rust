@@ -1,5 +1,6 @@
 # onboarding-rust
 
+### First review if you have set up your Joy Labs [programming configuration](https://honey.is/home/#post/778734)
 
 1.- [Create an SSH key on your local computer.](https://help.github.com/en/enterprise/2.15/user/articles/adding-a-new-ssh-key-to-your-github-account)
 
@@ -51,7 +52,10 @@ git commit -m "your comments here"
 git push origin name_of_the_branch
 ```
 
-11.- On Github make a pull requeset of your branch and choose a peer to review it (try to choose someone different):
+11.- On Github make a pull requeset of your branch and choose a peer to review it (try to choose someone different).
+
+
+
 
 
 
