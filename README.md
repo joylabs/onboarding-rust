@@ -45,7 +45,7 @@ Git push origin name_of_the_branch
 10.- On Github make a pull requeset of your branch and choose someone to review it (try to choose someone different):
 
 
-To run the test navigate to that days submission and run
+###To run the test navigate to that days submission and run
 
 ```
 cargo test
