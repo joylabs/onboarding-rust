@@ -70,4 +70,3 @@ git push origin name_of_the_branch
 
 
 
-
