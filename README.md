@@ -8,9 +8,9 @@
 git --version
 ```
 
-3.- Clone master repository with SSH
+3.- On the folder you select, clone the master repository with SSH
 ```
-git clone "SSH link"
+git clone SSH_link
 ```
 
 4.- Check repository branches and in wich one you are:
@@ -28,30 +28,30 @@ git checkout -b your_name
 git checkout -b your_name-e1
 ```
 
-7.- Solve your exercice
+7.- Solve your exercice, follow the structure of the folders and 
 *To run the test navigate to that days submission and run*
 
 ```
 cargo test
 ```
 
-7.- Add all your changes (you can review your modified files with *git status*):
+8.- Add all your changes (you can review your modified files with *git status*):
 ```
-Git add .
+git add .
 ```
 
-8.-Create your commit:
+9.-Create your commit:
 ```
 git commit -m "your comments here"
 
 ```
 
-9.- Push changes on your branch:
+10.- Push changes on your branch:
 ```
-Git push origin name_of_the_branch
+git push origin name_of_the_branch
 ```
 
-10.- On Github make a pull requeset of your branch and choose someone to review it (try to choose someone different):
+11.- On Github make a pull requeset of your branch and choose a peer to review it (try to choose someone different):
 
 
 
