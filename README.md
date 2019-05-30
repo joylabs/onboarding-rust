@@ -51,7 +51,7 @@ git commit -m "your comments here"
 Git push origin name_of_the_branch
 ```
 
-10.- On Github make a pull requeset of your branch and choose someone to review it (try to choose someone different):
+10.- On Github make a pull requeset of your branch (check that you compare it with your branch, not *master*) and choose someone to review it (try to choose someone different):
 
 
 
