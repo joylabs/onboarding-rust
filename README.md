@@ -36,23 +36,30 @@ git checkout -b your_name-e1
 cargo test
 ```
 
-8.- Add all your changes (you can review your modified files with *git status*):
+8.- Once the tests for your exercise pass, run the comprehensive tests for the entire project
+*To run the test navigate to the root of onboarding-rust repo and run*
+
+```
+./bin/test
+```
+
+9.- Add all your changes (you can review your modified files with *git status*):
 ```
 git add .
 ```
 
-9.-Create your commit:
+10.-Create your commit:
 ```
 git commit -m "your comments here"
 
 ```
 
-10.- Push changes on your branch:
+11.- Push changes on your branch:
 ```
 git push origin name_of_the_branch
 ```
 
-11.- On Github make a pull requeset of your branch and choose a peer to review it (try to choose someone different).
+12.- On Github make a pull request of your branch and choose a peer to review it (try to choose someone different).  Check that the automated checks on the PR all pass, and fix any that don't.
 
 
 ### Resources
