@@ -4,3 +4,8 @@ build
 /.idea
 *.iml
 .vscode
+
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
