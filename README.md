@@ -40,7 +40,7 @@ cargo test
 *To run the test navigate to the root of onboarding-rust repo and run*
 
 ```
-./bin/test
+docker-compose run build bin/test
 ```
 
 9.- Add all your changes (you can review your modified files with *git status*):
