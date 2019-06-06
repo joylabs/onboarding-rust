@@ -1,3 +1,4 @@
+#![allow(clippy::all)]
 pub fn exercise2(input: Vec<Vec<i64>>) -> Vec<Vec<i64>> {
 
     let mut result = vec![];
