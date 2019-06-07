@@ -1,14 +1,11 @@
-pub fn exercise7(mut v: Vec<i32>) -> Vec<i32> {
-    let size = v.len() - 1;
-    
-    let add_to_last_position = v.get(size).unwrap() + 1;
-
-    if add_to_last_position < 10 {
-        v[size] = v.get(size).unwrap() + 1;
-        return v;
+pub fn exercise7(v: Vec<i32>) -> Vec<i32> {
+    let v: String = v.into_iter().map(|x| x.to_string()).collect();
+    let v: i32 = v.parse().unwrap();
+    let vv = (v + 1).to_string();
+    let mut v: Vec<i32> = vec![];
+    for c in vv.chars() {
+        let p = c.to_string().parse().unwrap();
+        v.push(p);
     }
-    let my_char: Vec<char> = add_to_last_position.to_string().chars().collect();
-    v[size] = my_char[0].to_digit(10).unwrap() as i32;
-    v.push(my_char[1].to_digit(10).unwrap() as i32);
     v
 }

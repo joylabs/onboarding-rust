@@ -17,7 +17,7 @@ fn test_2_week1_exercise7() {
 
 #[test]
 fn test_3_week1_exercise7() {
-    let a = vec! [9];
-    let b = vec! [1,0];
+    let a = vec! [9,9,9];
+    let b = vec! [1,0,0,0];
     assert_eq!(b, exercise7(a));
 }
