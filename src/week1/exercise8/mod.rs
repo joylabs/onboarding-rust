@@ -1,3 +1,4 @@
+#![allow(clippy::all)]
 pub fn exercise8(s: String)->i32 {
     let mut cont = 0;
     let mut suma = 0;
