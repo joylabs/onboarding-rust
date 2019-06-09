@@ -1,11 +1,8 @@
-#![allow(clippy::all)]
 pub fn exercise8(s: String)->i32 {
-    let mut cont = 0;
     let mut suma = 0;
     let v: i32 = 26;
-    for i in s.chars().rev() {
-        suma += search_position(i) * v.pow(cont);
-        cont += 1;
+    for (cont,i) in s.chars().rev().enumerate() {
+        suma += search_position(i) * v.pow(cont as u32);
     }
     suma
 }
