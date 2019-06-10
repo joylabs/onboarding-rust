@@ -1,3 +1,5 @@
+#![allow(clippy::all)]
+
 pub fn matrix_flip_inverse(input: Vec<Vec<i64>>) -> Vec<Vec<i64>> {
     
     let mut result = vec![];
@@ -5,11 +7,11 @@ pub fn matrix_flip_inverse(input: Vec<Vec<i64>>) -> Vec<Vec<i64>> {
     let columns = input[0].len();
 
     for a in 0..rows {
-        let mut newRow = vec![];
+        let mut new_row = vec![];
         for b in (0..columns).rev(){
-            newRow.push(1-input[a][b]);
+            new_row.push(1-input[a][b]);
         }
-        result.push(newRow);
+        result.push(new_row);
     }
     result
 }
