@@ -4,5 +4,5 @@ pub fn exercise9(i:i32)->bool{
     let f = f.log2();
     let rest = f.floor() - f;
 
-    return rest.abs()<1e-10
+    rest.abs()<1e-10
 }
