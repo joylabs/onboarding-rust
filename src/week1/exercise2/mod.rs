@@ -1,3 +1,5 @@
+#![allow(clippy::all)]
+
 pub fn matrix_transpose(input: Vec<Vec<i64>>) -> Vec<Vec<i64>> {
     let mut result = vec![];
     let rows = input.len();

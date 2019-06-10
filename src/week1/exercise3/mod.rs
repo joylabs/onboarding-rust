@@ -1,3 +1,5 @@
+#![allow(clippy::all)]
+
 pub fn matrix_flip_inverse(input: Vec<Vec<i64>>) -> Vec<Vec<i64>> {
 
     let mut result = vec![];
