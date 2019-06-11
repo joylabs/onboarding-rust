@@ -1,24 +1,21 @@
 pub fn plus_one(input: Vec<i8>) -> Vec<i8> {
-   let mut output = input.clone();
    let mut carry_on = true;
-
-   for i in output.iter_mut().rev() {
-      if carry_on {
-         if *i < 9 {
-            *i += 1;
-            carry_on = false;
-         } else {
-            *i = 0;
-            carry_on = true;
+   let mut output: Vec<i8> = input
+      .iter()
+      .rev()
+      .map(|x| {
+         if carry_on {
+            if *x < 9 {
+               carry_on = false;
+               return x + 1;
+            }
+            return 0;
          }
-      }
-   }
-
+         *x
+      })
+      .collect();
    if carry_on {
-      let mut o: Vec<i8> = vec![1];
-      o.append(&mut output);
-      output = o;
+      output.push(1);
    }
-
-   output
+   output.into_iter().rev().collect()
 }
