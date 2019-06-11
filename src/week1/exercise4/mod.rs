@@ -40,9 +40,5 @@ pub fn is_self_dividing_number(n: i32) -> bool {
       return false;
    }
    
-   if n % num != 0 {
-      false
-   } else {
-      true
-   }
+   n % num == 0
 }
