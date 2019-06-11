@@ -10,6 +10,13 @@ fn test_week1_exercise6_example1() {
 #[test]
 fn test_week1_exercise6_example2() {
     let input = vec![4, 3, 2, 1];
-    let expected = vec![4, 3, 2, 1];
+    let expected = vec![4, 3, 2, 2];
+    assert_eq!(expected, plus_one(input));
+}
+
+#[test]
+fn test_week1_exercise6_example3() {
+    let input = vec![9];
+    let expected = vec![1, 0];
     assert_eq!(expected, plus_one(input));
 }
