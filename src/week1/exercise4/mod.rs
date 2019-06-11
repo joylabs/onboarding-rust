@@ -35,10 +35,10 @@ pub fn is_self_dividing_number(n: i32) -> bool {
    println!("final num: {}", num);
 
    if num == 0 {
-      return false;
+      false
    } else if n % num != 0 {
-      return false;
+      false
    } else {
-      return true;
+      true
    }
 }
