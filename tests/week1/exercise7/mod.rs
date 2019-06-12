@@ -20,3 +20,10 @@ fn test_week1_exercise7_example3() {
     let expected = 701;
     assert_eq!(expected, get_column_number(input));
 }
+
+#[test]
+fn test_week1_exercise7_example4() {
+    let input = "AAA";
+    let expected = 703;
+    assert_eq!(expected, get_column_number(input));
+}
