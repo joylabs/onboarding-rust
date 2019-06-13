@@ -10,3 +10,8 @@ pub fn exercise11(word : String)->String{
     word2.pop();
     word2
 }
+
+// word.split_whitespace()
+//         .map(|w| w.chars().rev().collect::<String>())
+//         .collect::<Vec<_>>()
+//         .join(" ")

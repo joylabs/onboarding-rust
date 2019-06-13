@@ -17,3 +17,14 @@ pub fn exercise12(word:String)->bool{
     }
     word2 == word3
 }
+
+// word.chars()
+//         .filter(|c| c.is_alphanumeric())
+//         .collect::<String>()
+//         .to_lowercase()
+//         == word
+//             .chars()
+//             .filter(|c| c.is_alphanumeric())
+//             .rev()
+//             .collect::<String>()
+//             .to_lowercase()
