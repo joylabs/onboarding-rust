@@ -1,10 +1,11 @@
+//use itertools::EitherOrBoth::Both;
+
 pub fn exercise16(x: i32, y: i32) -> i32 {
     if x > y {
-        return iterate(format!("{:b}", x), format!("{:b}", y));
+        iterate(format!("{:b}", x), format!("{:b}", y))
     } else {
-        return iterate(format!("{:b}", y), format!("{:b}", x));
+        iterate(format!("{:b}", y), format!("{:b}", x))
     }
-    0
 }
 
 fn iterate(s1: String, mut s2: String) -> i32 {
@@ -19,3 +20,21 @@ fn iterate(s1: String, mut s2: String) -> i32 {
     }
     sum
 }
+
+// pub fn Alex_suggestion(x: i32, y: i32) -> i32 {
+//     let s1 = format!("{:b}", x);
+//     let s2 = format!("{:b}", y);
+//     s1.chars()
+//         .rev()
+//         .zip_longest(s2.chars().rev())
+//         .map(|pair| match pair {
+//             Both(i, j) if i == j => 0,
+//             _ => 1,
+//         })
+//         .sum()
+// }
+
+
+// pub fn exercise16(x: i32, y: i32) -> i32 {
+//     (x ^ y).count_ones() as i32
+// }
