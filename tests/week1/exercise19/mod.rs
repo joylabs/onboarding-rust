@@ -1,4 +1,4 @@
-use onboarding_rust::week1::exercise17::exercise17;
+use onboarding_rust::week1::exercise19::exercise19;
 
 #[test]
 fn test_1_week1_exercise19() {
