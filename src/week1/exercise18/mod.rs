@@ -1,6 +1,5 @@
 pub fn exercise18(v: Vec<i32>) -> i32 {
 
-    let mut unique = 0;
     for i in &v {
         let mut is = 0;
         for j in &v {
@@ -9,8 +8,8 @@ pub fn exercise18(v: Vec<i32>) -> i32 {
             }
         }
         if is < 2 {
-            unique = *i;
+            return *i;
         }
     }
-    unique
+    0
 }
