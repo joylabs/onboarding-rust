@@ -1,19 +1,26 @@
 pub fn number_complement(input: i32) -> i32 {
+    let mut unos = u32::max_value();
 
-    let binary_input = format!("{:b}", input);
-
-    binary_input
-        .chars()
-        .rev()
-        .enumerate()
-        .fold(0, |acc, (j, i)| {
-            if i == '0' {
-                return acc + 2i32.pow(j as u32);
-            }
-            acc
-        })
-
+    if input.leading_zeros() == 32 {
+        return 1;
+    }
+    unos >>= input.leading_zeros();
+    (input as u32 ^ unos) as i32
 }
+
+// SEGUNDA OPCION
+// let binary_input = format!("{:b}", input);
+
+// binary_input
+//     .chars()
+//     .rev()
+//     .enumerate()
+//     .fold(0, |acc, (j, i)| {
+//         if i == '0' {
+//             return acc + 2i32.pow(j as u32);
+//         }
+//         acc
+//     })
 
 // PRIMERA OPCION
 // fn main() {
