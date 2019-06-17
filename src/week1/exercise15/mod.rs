@@ -7,6 +7,13 @@ pub fn number_complement(input: i32) -> i32 {
     unos >>= input.leading_zeros();
     (input as u32 ^ unos) as i32
 }
+// TERCERA OPCION
+// const BIT_SIZE: u32 = 32;
+// const THRESHOLD: u64 = 4294967296; // 2^32
+// pub fn number_complement(input: u32) -> u32 {
+//     let size: u32 = BIT_SIZE - input.leading_zeros();
+//     (!input as u64) - (THRESHOLD - 2_u32.pow(size) as u64)
+// }
 
 // SEGUNDA OPCION
 // let binary_input = format!("{:b}", input);
