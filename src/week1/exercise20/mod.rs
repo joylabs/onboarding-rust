@@ -1,23 +1,23 @@
+
+use std::collections::hash_map::Entry;
+use std::collections::HashMap;
+
 pub fn exercise20(v: Vec<i32>, x: i32) -> Vec<i32> {
-    let vv = v.len();
-    for i in 0..vv {
-        for j in 0..vv {
-            if x == v[j] + v[i] && j != i {
-                return vec![i as i32, j as i32];
+
+    let mut key = HashMap::new();
+    for (i, item) in v.iter().enumerate() {
+        key.insert(*item, i);
+    }
+
+    for (j, item) in v.iter().enumerate() {
+        let minus = x - item;
+        if let Entry::Occupied(entry) = key.entry(minus) {
+            let x = *entry.get() as i32;
+            if x != j as i32 {
+                return vec![j as i32, x];
             }
         }
     }
     vec![0, 0]
 }
 
-// fn ne_w(v: Vec<i32>, x: i32){
-
-//     v.into_iter().enumerate().filter_map(|(i,j)|
-//     { v.into_iter().enumerate().map(|(l,k)|
-//     {if i !=l &&  j+k == x{
-//         Some((i,l))
-//      }else{
-//          None
-//      }}.find_map(|o| o) } );
-
-// }
