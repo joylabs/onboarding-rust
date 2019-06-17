@@ -13,3 +13,10 @@ fn test_week1_exercise10_example2() {
     let expected = "leotcede".to_string();
     assert_eq!(expected, reverse_vowels(input));
 }
+
+#[test]
+fn test_week1_exercise10_example3() {
+    let input = "yahooh";
+    let expected = "yohoah".to_string();
+    assert_eq!(expected, reverse_vowels(input));
+}
