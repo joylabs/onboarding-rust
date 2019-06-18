@@ -27,3 +27,10 @@ fn test_week1_exercise15_example4() {
     let expected = 0;
     assert_eq!(expected, get_complement_number(input));
 }
+
+#[test]
+fn test_week1_exercise15_example5() {
+    let input = 3;
+    let expected = 0;
+    assert_eq!(expected, get_complement_number(input));
+}
