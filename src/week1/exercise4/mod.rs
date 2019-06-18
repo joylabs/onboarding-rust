@@ -21,12 +21,3 @@ fn is_div(i: i32) -> bool {
     }
     is_div
 }
-// OPTION ONE
-// let mut output: Vec<i32> = vec![];
-// for x in input[0]..=input[1] {
-
-//     if is_div(x) {
-//         output.push(x);
-//     }
-// }
-// output
