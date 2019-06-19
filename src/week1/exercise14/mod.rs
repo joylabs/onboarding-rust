@@ -11,17 +11,13 @@ pub fn find_common_prefix(mut input: Vec<&str>) -> String {
    get_common_prefix(first_item, last_item)
 }
 
-fn get_common_prefix(first_item: Vec<char>, mut last_item: Vec<char>) -> String {
+fn get_common_prefix(first_item: Vec<char>, last_item: Vec<char>) -> String {
    first_item
       .iter()
       .enumerate()
       .fold("".to_string(), |mut acc, (i, c)| {
-         if !last_item.is_empty() {
-            if *c == last_item[i] {
-               acc.push_str(&c.to_string());
-            } else {
-               last_item = vec![];
-            }
+         if (*c == last_item[i] ) && (acc.len() == i) {
+            acc.push_str(&c.to_string());
          }
          acc
       })
