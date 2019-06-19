@@ -1,5 +1,5 @@
 pub fn reverse_vowels_string(input: &str) -> String {
-    let mut vowels = input.chars().filter(|a| is_vowel(*a)).collect::<String>();
+    let mut vowels: String = input.chars().filter(|a| is_vowel(*a)).collect();
     input
         .chars()
         .map(|c| {
@@ -9,7 +9,7 @@ pub fn reverse_vowels_string(input: &str) -> String {
                 c
             }
         })
-        .collect::<String>()
+        .collect()
 }
 
 
