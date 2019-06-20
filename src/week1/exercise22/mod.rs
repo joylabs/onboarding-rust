@@ -1,17 +1,24 @@
+// friend-circle exercise
 pub fn exercise22(input: Vec<Vec<i32>>) -> i32 {
-    let mut uniond_find = initialice_union_find(3);
-    let rows = input.len();
-    let columns = input[0].len();
 
-    for i in 0..rows {
-        for j in 0..columns {
-            if input[i][j] == 1 {
-                uniond_find.union(i as i32, j as i32);
-            }
-        }
-    }
-    uniond_find.circles as i32
-
+    let mut uniond_find = initialice_union_find(input.len() as i32);
+    input
+        .into_iter()
+        .enumerate()
+        .fold(0, |mut circle_number, (a, is_friend)| {
+            circle_number =
+                is_friend
+                    .into_iter()
+                    .enumerate()
+                    .fold(0, |mut count_circles, (b, element)| {
+                        if element == 1 {
+                            uniond_find.union(a as i32, b as i32);
+                            count_circles = uniond_find.circles;
+                        }
+                        count_circles
+                    });
+            circle_number
+        })
 }
 
 
@@ -28,31 +35,25 @@ fn initialice_union_find(num: i32) -> FindFrienCirlce {
 }
 impl FindFrienCirlce {
 
-    fn find(&mut self, mut element: i32) -> i32 {
-        let mut parent = self.username[element as usize] as i32;
-        while element != parent {
-            let grandparent = self.username[element as usize] as i32;
-            self.username[element as usize] = grandparent;
-            element = parent;
-            parent = grandparent;
+    fn find(&mut self, mut position: i32) -> i32 {
+        let mut friend = self.username[position as usize] as i32;
+        while position != friend {
+            let search_position = self.username[position as usize] as i32;
+            self.username[position as usize] = search_position;
+            position = friend;
+            friend = search_position;
         }
-        element
+        position
     }
 
-    pub fn union(&mut self, a: i32, b: i32) -> bool {
+    pub fn union(&mut self, a: i32, b: i32) {
         let a = self.find(a);
         let b = self.find(b);
 
-        if a == b {
-            return false;
-        }
-
         if a != b {
             self.username[a as usize] = b;
-            println!("circle a {}", a);
             self.circles -= 1;
         }
-        true
     }
 }
 
