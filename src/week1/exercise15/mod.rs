@@ -1,19 +1,14 @@
-pub fn get_complement_number(mut input: i32) -> i32 {
-   const BIT_31: i32 = 1 << 30;
+pub fn get_complement_number(input: i32) -> i32 {
+   is_valid_number(input);
 
-   if input == 0 {
-      1
-   } else if input > 0 {
-      let mut shift_counter = 1;
+   let binary_number_string = format!("{:b}",input);
+   let leading_zeros = 32 - binary_number_string.len();
 
-      while input < BIT_31 {
-         input <<= 1;
-         shift_counter += 1;
-      }
-      input <<= 1;
+   (!input) << leading_zeros >> leading_zeros
+}
 
-      (!input) >> shift_counter
-   } else {
-      !input
+fn is_valid_number(input: i32) {
+   if input < 1 {
+      panic!("Number must be a positive and greater than 0")
    }
 }
