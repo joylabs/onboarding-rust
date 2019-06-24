@@ -2,7 +2,7 @@ use std::collections::HashSet;
 
 pub fn unique_morse_representations(input: Vec<String>) -> i32 {
 
-   let key: HashSet<String> = input
+   let set: HashSet<String> = input
       .iter()
       .map(|word| {
          word.chars().fold("".to_string(), |morse_code, ch| {
@@ -10,8 +10,7 @@ pub fn unique_morse_representations(input: Vec<String>) -> i32 {
          })
       })
       .collect();
-   println!("{:?}", key);
-   key.len() as i32
+   set.len() as i32
 }
 
 fn find_letter(ch: char) -> String {
