@@ -3,9 +3,9 @@ pub fn get_single_number(mut input: Vec<i32>) -> i32 {
    let mut unique = input[0];
    let mut is_unique = 1;
 
-   for i in 1..input.len() {
+   for number in input.into_iter().skip(1) {
 
-      if unique == input[i] {
+      if unique == number {
          is_unique += 1;
       } else {
          if is_unique == 1 {
@@ -14,7 +14,7 @@ pub fn get_single_number(mut input: Vec<i32>) -> i32 {
          is_unique = 1;
       }
 
-      unique = input[i];
+      unique = number;
    }
 
    unique
