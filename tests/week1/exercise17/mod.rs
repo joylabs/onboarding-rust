@@ -27,3 +27,10 @@ fn test_week1_exercise17_example4() {
     let expected = 0;
     assert_eq!(expected, binary_gap(input));
 }
+
+#[test]
+fn test_week1_exercise17_example5() {
+    let input = 343; //0b101010111
+    let expected = 2;
+    assert_eq!(expected, binary_gap(input));
+}
