@@ -1,47 +1,47 @@
-// friend-circle exercise
-pub fn exercise22(input: Vec<Vec<i32>>) -> i32 {
-
-    let mut uniond_find = FindFrienCirlce::initialice_union_find(input.len() as i32);
-
-    input.into_iter().enumerate().for_each(|(a, row)| {
-        find_union(a, row, &mut uniond_find);
-    });
-
-    uniond_find.circles
+struct FriendHelper {
+    index_vector: Vec<i32>,
+    circle_count: i32,
 }
 
-pub struct FindFrienCirlce {
-    index: Vec<i32>,
-    circles: i32,
-}
-
-impl FindFrienCirlce {
-
-    fn initialice_union_find(matrix_order: i32) -> FindFrienCirlce {
-        FindFrienCirlce {
-            index: (0..matrix_order).map(|x| x).collect(),
-            circles: matrix_order,
+impl FriendHelper {
+    fn init_helper(matrix_order: i32) -> FriendHelper {
+        FriendHelper {
+            index_vector: (0..matrix_order).map(|x| x).collect(),
+            circle_count: matrix_order,
         }
     }
+
     fn find(&mut self, mut position: usize) -> usize {
-        let friend = self.index[position] as usize;
+        let friend = self.index_vector[position] as usize;
         if position != friend {
-            self.index[position as usize] = self.index[position as usize] as i32;
+            self.index_vector[position] = self.index_vector[position];
             position = friend;
         }
         position
     }
 }
 
-pub fn find_union(a: usize, row: Vec<i32>, friend_circle: &mut FindFrienCirlce) {
+pub fn is_friend_circle(input: Vec<Vec<i32>>) -> i32 {
+    let matrix_order = input.len() as i32;
+    let mut friend_helper = FriendHelper::init_helper(matrix_order);
 
-    row.iter().enumerate().for_each(|(b, element)| {
-        let a = friend_circle.find(a);
-        let b = friend_circle.find(b);
-        if *element == 1 && a != b {
-            friend_circle.index[a] = b as i32;
-            friend_circle.circles -= 1;
+    input.into_iter().enumerate().for_each(|(i, row)| {
+        get_one_count(i, row, &mut friend_helper);
+    });
+
+    friend_helper.circle_count
+}
+
+fn get_one_count(i: usize, row: Vec<i32>, friend_helper: &mut FriendHelper) {
+    row.into_iter().enumerate().for_each(|(j, element)| {
+        println!("element {}", element);
+
+        let a = friend_helper.find(i);
+        let b = friend_helper.find(j);
+
+        if element == 1 && a != b {
+            friend_helper.index_vector[a] = b as i32;
+            friend_helper.circle_count -= 1;
         }
     });
 }
-
