@@ -1,59 +1,47 @@
 // friend-circle exercise
 pub fn exercise22(input: Vec<Vec<i32>>) -> i32 {
 
-    let mut uniond_find = initialice_union_find(input.len() as i32);
-    input
-        .into_iter()
-        .enumerate()
-        .fold(0, |mut circle_number, (a, is_friend)| {
-            circle_number =
-                is_friend
-                    .into_iter()
-                    .enumerate()
-                    .fold(0, |mut count_circles, (b, element)| {
-                        if element == 1 {
-                            uniond_find.union(a as i32, b as i32);
-                            count_circles = uniond_find.circles;
-                        }
-                        count_circles
-                    });
-            circle_number
-        })
+    let mut uniond_find = FindFrienCirlce::initialice_union_find(input.len() as i32);
+
+    input.into_iter().enumerate().for_each(|(a, row)| {
+        find_union(a, row, &mut uniond_find);
+    });
+
+    uniond_find.circles
 }
 
-
 pub struct FindFrienCirlce {
-    username: Vec<i32>,
+    index: Vec<i32>,
     circles: i32,
 }
 
-fn initialice_union_find(num: i32) -> FindFrienCirlce {
-    FindFrienCirlce {
-        username: (0..num * num).map(|x| x).collect(),
-        circles: num,
-    }
-}
 impl FindFrienCirlce {
 
-    fn find(&mut self, mut position: i32) -> i32 {
-        let mut friend = self.username[position as usize] as i32;
-        while position != friend {
-            let search_position = self.username[position as usize] as i32;
-            self.username[position as usize] = search_position;
+    fn initialice_union_find(matrix_order: i32) -> FindFrienCirlce {
+        FindFrienCirlce {
+            index: (0..matrix_order).map(|x| x).collect(),
+            circles: matrix_order,
+        }
+    }
+    fn find(&mut self, mut position: usize) -> usize {
+        let friend = self.index[position] as usize;
+        if position != friend {
+            self.index[position as usize] = self.index[position as usize] as i32;
             position = friend;
-            friend = search_position;
         }
         position
     }
+}
 
-    pub fn union(&mut self, a: i32, b: i32) {
-        let a = self.find(a);
-        let b = self.find(b);
+pub fn find_union(a: usize, row: Vec<i32>, friend_circle: &mut FindFrienCirlce) {
 
-        if a != b {
-            self.username[a as usize] = b;
-            self.circles -= 1;
+    row.iter().enumerate().for_each(|(b, element)| {
+        let a = friend_circle.find(a);
+        let b = friend_circle.find(b);
+        if *element == 1 && a != b {
+            friend_circle.index[a] = b as i32;
+            friend_circle.circles -= 1;
         }
-    }
+    });
 }
 
