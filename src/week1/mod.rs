@@ -7,6 +7,7 @@ pub mod exercise6;
 pub mod exercise7;
 pub mod exercise8;
 pub mod exercise9;
+
 pub mod exercise10;
 pub mod exercise11;
 pub mod exercise12;
@@ -15,4 +16,6 @@ pub mod exercise14;
 pub mod exercise15;
 pub mod exercise16;
 pub mod exercise17;
+pub mod exercise18;
+
 pub mod exercise20;
