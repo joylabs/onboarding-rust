@@ -1,11 +1,11 @@
-struct FriendHelper {
+struct FriendCircle{
     index_vector: Vec<i32>,
     circle_count: i32,
 }
 
-impl FriendHelper {
-    fn init_helper(matrix_order: i32) -> FriendHelper {
-        FriendHelper {
+impl FriendCircle {
+    fn new(matrix_order: i32) -> FriendCircle {
+        FriendCircle {
             index_vector: (0..matrix_order).map(|x| x).collect(),
             circle_count: matrix_order,
         }
@@ -21,9 +21,9 @@ impl FriendHelper {
     }
 }
 
-pub fn is_friend_circle(input: Vec<Vec<i32>>) -> i32 {
+pub fn count_friend_circle(input: Vec<Vec<i32>>) -> i32 {
     let matrix_order = input.len() as i32;
-    let mut friend_helper = FriendHelper::init_helper(matrix_order);
+    let mut friend_helper = FriendCircle::new(matrix_order);
 
     input.into_iter().enumerate().for_each(|(i, row)| {
         get_one_count(i, row, &mut friend_helper);
@@ -32,7 +32,7 @@ pub fn is_friend_circle(input: Vec<Vec<i32>>) -> i32 {
     friend_helper.circle_count
 }
 
-fn get_one_count(i: usize, row: Vec<i32>, friend_helper: &mut FriendHelper) {
+fn get_one_count(i: usize, row: Vec<i32>, friend_helper: &mut FriendCircle) {
     row.into_iter().enumerate().for_each(|(j, element)| {
         println!("element {}", element);
 
