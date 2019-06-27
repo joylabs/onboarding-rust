@@ -1,7 +1,7 @@
 use onboarding_rust::week1::exercise5::fizz_buzz;
 
 #[test]
-fn test_week1_exercise1() {
+fn test_week1_exercise5() {
     let n = 15;
     let output = vec![
         "1",
