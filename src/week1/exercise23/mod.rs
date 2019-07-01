@@ -3,16 +3,16 @@ pub fn number_of_islands(grid: Vec<Vec<char>>) -> i32 {
 
     let mut lands = grid;
 
-    (0..lands.len()).fold(0, |mut islas, i| {
-        islas += (0..lands[0].len()).fold(0, |isla, j| {
-            if lands[i][j] == '1' {
-                recursiva_searching_sorrounded_lands_2(&mut lands, i, j);
-                isla + 1
-            } else {
-                isla
-            }
-        });
+    (0..lands.len()).fold(0, |islas, i| {
         islas
+            + (0..lands[0].len()).fold(0, |isla, j| {
+                if lands[i][j] == '1' {
+                    recursiva_searching_sorrounded_lands_2(&mut lands, i, j);
+                    isla + 1
+                } else {
+                    isla
+                }
+            })
     })
 
 }
