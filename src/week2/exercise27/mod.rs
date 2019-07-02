@@ -15,3 +15,14 @@ pub fn uncommon_words(a: String, b: String) -> Vec<String> {
         .collect()
 }
 
+// work to implemented and understand it
+// let counts = words
+//     .group_by(|b| b)      // returns something like { key: T, vals: Iter<T> }
+//     .map(|grp| (grp.key, grp.vals.count()))
+//     .collect();
+
+//     string.group_by(|b| b)      // returns something like { key: T, vals: Iter<T> }
+//     .map(|grp| (grp.key, grp.vals.count()))
+//     .filter(|(_, value)| **value == 1)
+//     .map(|(key, _)| key.to_string())
+//     .collect()
