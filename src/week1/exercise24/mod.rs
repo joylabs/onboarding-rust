@@ -68,18 +68,18 @@ fn recursiva_searching_border(border: &mut Vec<Vec<char>>, i: usize, j: usize) -
     false
 }
 
-fn fill_with(lands: &mut Vec<Vec<char>>, i: usize, j: usize, ch: char) {
-    lands[i][j] = ch;
-    if j + 1 < lands[0].len() && lands[i][j + 1] == 'O' {
-        fill_with(lands, i, j + 1, ch);
+fn fill_with(regions: &mut Vec<Vec<char>>, i: usize, j: usize, ch: char) {
+    regions[i][j] = ch;
+    if j + 1 < regions[0].len() && regions[i][j + 1] == 'O' {
+        fill_with(regions, i, j + 1, ch);
     }
-    if i + 1 < lands.len() && lands[i + 1][j] == 'O' {
-        fill_with(lands, i + 1, j, ch);
+    if i + 1 < regions.len() && regions[i + 1][j] == 'O' {
+        fill_with(regions, i + 1, j, ch);
     }
-    if j > 0 && lands[i][j - 1] == 'O' {
-        fill_with(lands, i, j - 1, ch);
+    if j > 0 && regions[i][j - 1] == 'O' {
+        fill_with(regions, i, j - 1, ch);
     }
-    if i > 0 && lands[i - 1][j] == 'O' {
-        fill_with(lands, i - 1, j, ch);
+    if i > 0 && regions[i - 1][j] == 'O' {
+        fill_with(regions, i - 1, j, ch);
     }
 }
