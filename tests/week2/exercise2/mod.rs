@@ -6,3 +6,4 @@ fn test_week2_exercise2_example1() {
     let expected = 2;
     assert_eq!(expected, count_unique_morse_words(input));
 }
+
