@@ -1,6 +1,6 @@
-use onboarding_rust::week1::exercise1::hello_world;
+use onboarding_rust::week1::exercise1::array_by_parity;
 
 #[test]
-fn test_week1_exercise1() {
-    assert_eq!(0, hello_world());
+fn array_by_parity_test() {
+    assert_eq!(vec![2, 4, 3, 1], array_by_parity(vec![3, 4, 2, 1]));
 }
