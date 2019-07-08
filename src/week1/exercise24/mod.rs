@@ -1,85 +1,58 @@
-pub fn sorrounded_regions(regions: &mut Vec<Vec<char>>) {
-    let mut board = regions.clone();
+pub fn sorrounded_regions(board: &mut Vec<Vec<char>>) {
 
-    (0..board.len()).for_each(|i| {
-        (0..board[0].len()).for_each(|j| {
-            if board[i][j] == 'O' {
-                if recursiva_searching_border(&mut board, i, j) {
-                    fill_with(&mut board, i, j, '0');
-                } else {
-                    fill_with(regions, i, j, 'X');
-                }
+    if board.is_empty() {
+        return;
+    }
+
+    // looking 'O' in border by rows
+    (0..board[0].len()).for_each(|i| {
+        if board[0][i] == 'O' {
+            recursive_fill(board, 0, i, '0');
+        }
+        if board[board.len() - 1][i] == 'O' {
+            recursive_fill(board, board.len() - 1, i, '0');
+        }
+    });
+
+    // looking 'O' in border by col
+    (0..board.len()).for_each(|j| {
+        if board[j][0] == 'O' {
+            recursive_fill(board, j, 0, '0');
+        }
+        if board[j][board[0].len() - 1] == 'O' {
+            recursive_fill(board, j, board[0].len() - 1, '0');
+        }
+    });
+
+    //replacing all 'O' no-in-border with 'X' and all the '0' by 'O'
+    board.iter_mut().for_each(|row| {
+        row.iter_mut().for_each(|ch| {
+            if *ch == 'O' {
+                *ch = 'X'
+            } else if *ch == '0' {
+                *ch = 'O'
             }
         })
     });
 }
 
-fn is_border(i: usize, j: usize, x: usize, y: usize) -> bool {
+fn recursive_fill(regions: &mut Vec<Vec<char>>, i: usize, j: usize, ch: char) {
 
-    if i == 0 {
-        return true;
-    }
-    if i == x - 1 {
-        return true;
-    }
-    if j == 0 {
-        return true;
-    }
-    if j == y - 1 {
-        return true;
-    }
-    false
-}
-
-fn recursiva_searching_border(border: &mut Vec<Vec<char>>, i: usize, j: usize) -> bool {
-
-    border[i][j] = 'X';
-    if is_border(i, j, border.len(), border[0].len()) {
-        border[i][j] = 'O';
-        return true;
-    }
-
-    if j + 1 < border[0].len()
-        && border[i][j + 1] == 'O'
-        && recursiva_searching_border(border, i, j + 1)
-    {
-        border[i][j] = 'O';
-        return true;
-    }
-
-    if i + 1 < border.len()
-        && border[i + 1][j] == 'O'
-        && recursiva_searching_border(border, i + 1, j)
-    {
-        border[i][j] = 'O';
-        return true;
-    }
-
-    if j > 0 && border[i][j - 1] == 'O' && recursiva_searching_border(border, i, j - 1) {
-        border[i][j] = 'O';
-        return true;
-    }
-
-    if i > 0 && border[i - 1][j] == 'O' && recursiva_searching_border(border, i - 1, j) {
-        border[i][j] = 'O';
-        return true;
-    }
-
-    false
-}
-
-fn fill_with(regions: &mut Vec<Vec<char>>, i: usize, j: usize, ch: char) {
     regions[i][j] = ch;
+    // right side searching
     if j + 1 < regions[0].len() && regions[i][j + 1] == 'O' {
-        fill_with(regions, i, j + 1, ch);
+        recursive_fill(regions, i, j + 1, ch);
     }
+    // down searching
     if i + 1 < regions.len() && regions[i + 1][j] == 'O' {
-        fill_with(regions, i + 1, j, ch);
+        recursive_fill(regions, i + 1, j, ch);
     }
+    // left side searching
     if j > 0 && regions[i][j - 1] == 'O' {
-        fill_with(regions, i, j - 1, ch);
+        recursive_fill(regions, i, j - 1, ch);
     }
+    // over searching
     if i > 0 && regions[i - 1][j] == 'O' {
-        fill_with(regions, i - 1, j, ch);
+        recursive_fill(regions, i - 1, j, ch);
     }
 }
