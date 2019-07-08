@@ -5,13 +5,13 @@ pub fn special_equivalent(input: Vec<String>) -> i32 {
     let mut groups: HashSet<String> = HashSet::new();
 
     input.iter().for_each(|s| {
-        let mut vectors = get_vectors(s.to_string());
-        vectors.0.sort();
-        vectors.1.sort();
-        vectors.0.append(&mut vectors.1);
-        groups.insert(vectors.0.into_iter().collect());
+        let (mut even, mut odd) = get_vectors(s.to_string());
+        even.sort();
+        odd.sort();
+        even.append(&mut odd);
+        groups.insert(even.into_iter().collect());
     });
-
+    println!("{:?}", groups);
     groups.len() as i32
 }
 
