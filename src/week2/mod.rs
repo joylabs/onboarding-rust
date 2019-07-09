@@ -4,3 +4,5 @@ pub mod exercise3;
 pub mod exercise4;
 pub mod exercise5;
 pub mod exercise7;
+
+pub mod exercise10;
