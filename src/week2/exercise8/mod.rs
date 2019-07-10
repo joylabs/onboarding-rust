@@ -47,8 +47,7 @@ fn looking_into_rows(input: Vec<Vec<char>>) -> bool {
     let mut row: HashSet<char> = HashSet::new();
     input.into_iter().all(|mut x| {
         row.clear();
-        x.sort_by(|a, b| a.cmp(b).reverse());
-        println!("{:?}", x);
+        x.sort_by(|a, b| b.cmp(a));
         x.iter().all(|y| {
             if *y != '.' {
                 if row.contains(y) {
