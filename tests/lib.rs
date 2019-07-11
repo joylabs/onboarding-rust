@@ -1,2 +1,2 @@
-pub mod common;
-pub mod week1;
+mod common;
+mod week1;

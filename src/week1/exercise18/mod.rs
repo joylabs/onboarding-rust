@@ -4,20 +4,19 @@ pub fn single_number(num: Vec<i32>) -> i32 {
     input.sort();
 
     let mut unique = input.remove(0);
-    let mut is_unique = 1;
+    let mut is_unique = true;
 
-    for comp in input {
-        if unique == comp {
-            is_unique += 1;
+    for next in input {
+        if unique == next {
+            is_unique = false;
         } else {
-            if is_unique == 1 {
+            if is_unique {
                 return unique;
             }
-            is_unique = 1;
+            is_unique = true;
         }
 
-        unique = comp;
+        unique = next;
     }
-
     unique
 }
