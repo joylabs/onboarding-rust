@@ -13,3 +13,7 @@ criterion = "0.2"
 
 [profile.release]
 debug = true
+
+[[bench]]
+name = "bench_main"
+harness = false

@@ -1,20 +1,10 @@
 pub fn detect_capital(input: &str) -> bool {
-    if input
-        .chars()
-        .inspect(|r| print!("{}.", r.is_uppercase()))
-        .all(|x| x.is_uppercase())
-        || input
-            .chars()
-            .inspect(|r| print!("{}.", r.is_uppercase()))
-            .all(|x| x.is_lowercase())
-    {
-        print!(".asdf");
+    if input.chars().all(|x| x.is_uppercase()) || input.chars().all(|x| x.is_lowercase()) {
         return true;
     }
     if input.chars().filter(|x| x.is_uppercase()).count() == 1
         && input.chars().nth(0).unwrap().is_uppercase()
     {
-        print!("xxxxx");
         return true;
     }
 
