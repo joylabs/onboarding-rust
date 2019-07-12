@@ -1,22 +1,17 @@
-pub fn single_number(num: Vec<i32>) -> i32 {
-    let mut input = num;
+use std::collections::HashMap;
+
+pub fn single_number(nums: Vec<i32>) -> i32 {
+    let mut input = nums;
 
     input.sort();
 
-    let mut unique = input.remove(0);
-    let mut is_unique = true;
+    let mut counter = HashMap::new();
 
-    for next in input {
-        if unique == next {
-            is_unique = false;
-        } else {
-            if is_unique {
-                return unique;
-            }
-            is_unique = true;
-        }
 
-        unique = next;
-    }
-    unique
+    input.iter().for_each(|x| {
+        *counter.entry(x).or_insert(0) += 1;
+    });
+    print!("{:?}", counter);
+    **counter.iter().find(|(_, v)| **v == 1).unwrap().0
+
 }
