@@ -1,14 +1,5 @@
-use std::collections::HashMap;
-
 pub fn single_number(nums: Vec<i32>) -> i32 {
 
-    let mut counter = HashMap::new();
-
-
-    nums.iter().for_each(|x| {
-        *counter.entry(x).or_insert(0) += 1;
-    });
-    print!("{:?}", counter);
-    **counter.iter().find(|(_, v)| **v == 1).unwrap().0
+    nums.iter().fold(0, |acc, n| acc ^ n)
 
 }
