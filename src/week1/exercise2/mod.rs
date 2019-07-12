@@ -1,6 +1,4 @@
-
-pub fn transpose_matrix(v: Vec<Vec<i64>>) ->Vec<Vec<i64>> {
-    
+pub fn transpose_matrix(v: Vec<Vec<i64>>) -> Vec<Vec<i64>> {
     let mut result = vec![];
     for (ix, _x) in v[0].iter().enumerate() {
         let mut new_row: Vec<i64> = vec![];
@@ -9,6 +7,6 @@ pub fn transpose_matrix(v: Vec<Vec<i64>>) ->Vec<Vec<i64>> {
         }
         result.push(new_row);
     }
-    
+
     result
 }
