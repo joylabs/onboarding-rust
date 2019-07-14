@@ -7,11 +7,9 @@ pub fn sorrounded_regions(board: &mut Vec<Vec<char>>) {
     // looking 'O' in border by rows
     (0..board[0].len()).for_each(|i| {
         if board[0][i] == 'O' {
-            println!("linea 10");
             search_recursive(board, 0, i as i32, '0');
         }
         if board[board.len() - 1][i] == 'O' {
-            println!("linea 14");
             search_recursive(board, (board.len() - 1) as i32, i as i32, '0');
         }
     });
@@ -19,11 +17,9 @@ pub fn sorrounded_regions(board: &mut Vec<Vec<char>>) {
     // looking 'O' in border by col
     (0..board.len()).for_each(|j| {
         if board[j][0] == 'O' {
-            println!("linea 22");
             search_recursive(board, j as i32, 0, '0');
         }
         if board[j][board[0].len() - 1] == 'O' {
-            println!("linea 26");
             search_recursive(board, j as i32, (board[0].len() - 1) as i32, '0');
         }
     });
@@ -32,10 +28,8 @@ pub fn sorrounded_regions(board: &mut Vec<Vec<char>>) {
     board.iter_mut().for_each(|row| {
         row.iter_mut().for_each(|ch| {
             if *ch == 'O' {
-                println!("linea 35");
                 *ch = 'X'
             } else if *ch == '0' {
-                println!("linea 37");
                 *ch = 'O'
             }
         })
