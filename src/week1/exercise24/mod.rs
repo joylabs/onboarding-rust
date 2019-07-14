@@ -7,20 +7,24 @@ pub fn sorrounded_regions(board: &mut Vec<Vec<char>>) {
     // looking 'O' in border by rows
     (0..board[0].len()).for_each(|i| {
         if board[0][i] == 'O' {
-            recursive_fill(board, 0, i, '0');
+            println!("linea 10");
+            search_recursive(board, 0, i as i32, '0');
         }
         if board[board.len() - 1][i] == 'O' {
-            recursive_fill(board, board.len() - 1, i, '0');
+            println!("linea 14");
+            search_recursive(board, (board.len() - 1) as i32, i as i32, '0');
         }
     });
 
     // looking 'O' in border by col
     (0..board.len()).for_each(|j| {
         if board[j][0] == 'O' {
-            recursive_fill(board, j, 0, '0');
+            println!("linea 22");
+            search_recursive(board, j as i32, 0, '0');
         }
         if board[j][board[0].len() - 1] == 'O' {
-            recursive_fill(board, j, board[0].len() - 1, '0');
+            println!("linea 26");
+            search_recursive(board, j as i32, (board[0].len() - 1) as i32, '0');
         }
     });
 
@@ -28,31 +32,29 @@ pub fn sorrounded_regions(board: &mut Vec<Vec<char>>) {
     board.iter_mut().for_each(|row| {
         row.iter_mut().for_each(|ch| {
             if *ch == 'O' {
+                println!("linea 35");
                 *ch = 'X'
             } else if *ch == '0' {
+                println!("linea 37");
                 *ch = 'O'
             }
         })
     });
 }
 
-fn recursive_fill(regions: &mut Vec<Vec<char>>, i: usize, j: usize, ch: char) {
+fn search_recursive(regions: &mut Vec<Vec<char>>, i: i32, j: i32, ch: char) {
 
-    regions[i][j] = ch;
-    // right side searching
-    if j + 1 < regions[0].len() && regions[i][j + 1] == 'O' {
-        recursive_fill(regions, i, j + 1, ch);
-    }
-    // down searching
-    if i + 1 < regions.len() && regions[i + 1][j] == 'O' {
-        recursive_fill(regions, i + 1, j, ch);
-    }
-    // left side searching
-    if j > 0 && regions[i][j - 1] == 'O' {
-        recursive_fill(regions, i, j - 1, ch);
-    }
-    // over searching
-    if i > 0 && regions[i - 1][j] == 'O' {
-        recursive_fill(regions, i - 1, j, ch);
+    regions[i as usize][j as usize] = ch;
+    let cord: Vec<(i32, i32)> = vec![(-1, 0), (0, 1), (0, -1), (1, 0)];
+
+    for (a, _) in cord.iter().enumerate() {
+        if i + cord[a].1 >= 0
+            && j + cord[a].0 < regions[0].len() as i32
+            && i + cord[a].1 < regions.len() as i32
+            && j + cord[a].0 >= 0
+            && regions[(i + cord[a].1) as usize][(j + cord[a].0) as usize] == 'O'
+        {
+            search_recursive(regions, i + cord[a].1, j + cord[a].0, ch);
+        }
     }
 }
