@@ -13,3 +13,4 @@ criterion = "0.2"
 
 [profile.release]
 debug = true
+
