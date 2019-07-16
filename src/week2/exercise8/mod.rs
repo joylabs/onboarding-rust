@@ -1,10 +1,11 @@
 use std::collections::HashSet;
 
 pub fn valid_sudoku(input: Vec<Vec<char>>) -> bool {
-    looking_into_rows(input.clone()) && looking_into_col(input.clone()) && looking_in_box(input)
+    let mut seen: HashSet<char> = HashSet::new();
+    rows_are_valid(&input, &mut seen) && columns_are_valid(&input, &mut seen) && looking_in_box(input, &mut seen)
 }
 
-fn looking_in_box(input: Vec<Vec<char>>) -> bool {
+fn looking_in_box(input: Vec<Vec<char>>, seen: &mut HashSet<char>) -> bool {
     let vectors = input.clone();
     let mut vec1: Vec<char> = vec![];
     let mut vec2: Vec<char> = vec![];
@@ -21,62 +22,48 @@ fn looking_in_box(input: Vec<Vec<char>>) -> bool {
             }
         }
     }
-    box_by_box(vec1) && box_by_box(vec2) && box_by_box(vec3)
+    box_by_box(vec1, seen) && box_by_box(vec2, seen) && box_by_box(vec3, seen)
 }
 
-fn box_by_box(vec: Vec<char>) -> bool {
-    let mut boxes: HashSet<char> = HashSet::new();
+fn box_by_box(vec: Vec<char>, seen: &mut HashSet<char>) -> bool {
+    seen.clear();
 
     for (i, ch) in vec.iter().enumerate() {
-        if *ch != '.' {
-            if boxes.contains(ch) {
-                return false;
-            } else {
-                boxes.insert(*ch);
-            }
-        }
+        verify_existing_numbers(*ch, seen);
         if i == 8 || i == 17 {
-            boxes.clear();
+            seen.clear();
         }
     }
     true
 }
 
+fn rows_are_valid(input: &Vec<Vec<char>>, seen: &mut HashSet<char>) -> bool {
+    seen.clear();
 
-fn looking_into_rows(input: Vec<Vec<char>>) -> bool {
-    let mut row: HashSet<char> = HashSet::new();
-    input.into_iter().all(|mut x| {
-        row.clear();
-        x.sort_by(|a, b| b.cmp(a));
-        x.iter().all(|y| {
-            if *y != '.' {
-                if row.contains(y) {
-                    return false;
-                } else {
-                    row.insert(*y);
-                }
-            } else {
-                return true;
-            }
-            true
-        })
+    input.iter().all(|x| {
+        seen.clear();
+        x.iter().all(|y| verify_existing_numbers(*y, seen))
     })
 }
 
-fn looking_into_col(input: Vec<Vec<char>>) -> bool {
-    let mut col: HashSet<char> = HashSet::new();
+fn columns_are_valid(input: &Vec<Vec<char>>, seen: &mut HashSet<char>) -> bool {
+    seen.clear();
 
     (0..9).all(|x| {
-        col.clear();
-        input.iter().all(|y| {
-            if y[x] != '.' {
-                if col.contains(&y[x]) {
-                    return false;
-                } else {
-                    col.insert(y[x]);
-                }
-            }
-            true
-        })
+        seen.clear();
+        input
+            .iter()
+            .all(|y| verify_existing_numbers(y[x], seen))
     })
+}
+
+fn verify_existing_numbers(input: char, hash: &mut HashSet<char>) -> bool {
+    if input != '.' {
+        if hash.contains(&input) {
+            return false;
+        } else {
+            hash.insert(input);
+        }
+    }
+    true
 }
