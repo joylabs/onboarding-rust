@@ -10,7 +10,6 @@ pub fn is_valid_sudoku(input: Vec<Vec<char>>) -> bool {
          }
          column.push(row[i])
       }
-      // println!("column {:?}", column);
 
       if !is_valid_line(&column) {
          return false;
@@ -20,7 +19,7 @@ pub fn is_valid_sudoku(input: Vec<Vec<char>>) -> bool {
    eval_sub_boxes(&input)
 }
 
-fn is_valid_line(input: &Vec<char>) -> bool {
+fn is_valid_line(input: &[char]) -> bool {
    let total_elements = 
       input
          .iter()
@@ -43,12 +42,10 @@ fn is_valid_line(input: &Vec<char>) -> bool {
          })
          .collect();
 
-   // println!("total: {} unique: {}", total_elements, unique_elements.len());
-
    total_elements == unique_elements.len()
 }
 
-fn eval_sub_boxes(input: &Vec<Vec<char>>) -> bool {
+fn eval_sub_boxes(input: &[Vec<char>]) -> bool {
 
    for j in (0..9).step_by(3) {
       let mut sub_box: Vec<char> = Vec::new();
@@ -56,12 +53,10 @@ fn eval_sub_boxes(input: &Vec<Vec<char>>) -> bool {
       for i in (0..9).step_by(3) {
          let k = j + 3;
 
-         sub_box.extend_from_slice(&input[i + 0][j..k]);
+         sub_box.extend_from_slice(&input[i][j..k]);
          sub_box.extend_from_slice(&input[i + 1][j..k]);
          sub_box.extend_from_slice(&input[i + 2][j..k]);
 
-
-         // println!("flat vector: {:?}\n", sub_box);
          if !is_valid_line(&sub_box) {
             return false;
          }
