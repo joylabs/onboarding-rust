@@ -9,10 +9,13 @@ pub fn get_uncommon_words(a: String, b: String) -> Vec<String> {
       *count += 1;
    }
 
-   all_words
-      .into_iter()
-      .filter(|(_, value)| *value == 1)
-      .map(|(key, _)| key.to_string())
-      .collect::<Vec<String>>()
+   let mut result = all_words
+                     .into_iter()
+                     .filter(|(_, value)| *value == 1)
+                     .map(|(key, _)| key.to_string())
+                     .collect::<Vec<String>>();
+
+   result.sort();
+   result
 }
 
