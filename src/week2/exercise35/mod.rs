@@ -1,30 +1,34 @@
-pub fn find_anagrams(s: String, p: &str) -> Vec<i32> {
+pub fn find_anagrams(s: &str, p: &str) -> Vec<i32> {
+
+  const OFFSET: usize = 'a' as usize;
+
   let mut anagram_index: Vec<i32> = Vec::new();
-  let s_length = s.len();
+  let mut alphabet_positions: Vec<i32> = vec![0; 26];
+
+  let s_chars: Vec<char> = s.chars().collect();
+
+  let s_len = s.len();
   let p_len = p.len();
-  let set: Vec<char> = p.chars().collect();
 
-  if s_length < p_len {
-    return anagram_index;
-  }
+  p.chars().for_each(|c| {
+    alphabet_positions[(c as usize) - OFFSET] += 1;
+  });
 
-  for i in 0..=(s_length - p_len) {
-    let j = i + p_len;
-    if contains_all(&s[i..j], &set) {
-      anagram_index.push(i as i32);
+  for i in 0..s_len {
+    alphabet_positions[(s_chars[i] as usize) - OFFSET] -= 1;
+
+    if i >= p_len {
+      alphabet_positions[(s_chars[i - p_len] as usize) - OFFSET] += 1;
+    }
+
+    if i >= (p_len - 1) && is_anagram(&alphabet_positions) {
+      anagram_index.push((i + 1 - p_len) as i32);
     }
   }
 
   anagram_index
 }
 
-fn contains_all(s: &str, set_p: &Vec<char>) -> bool {
-  let set_s: Vec<char> = s.chars().collect();
-  let mut new_vector = vec![0; 256];
-
-  for x in 0..set_p.len() {
-    new_vector[set_s[x] as usize] += 1;
-    new_vector[set_p[x] as usize] -= 1;
-  }
-  !new_vector.into_iter().any(|x| x > 0)
+fn is_anagram(alphabet_positions: &[i32]) -> bool {
+  [0; 26] == alphabet_positions
 }
