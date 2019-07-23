@@ -2,7 +2,9 @@ use std::collections::HashSet;
 
 pub fn valid_sudoku(input: Vec<Vec<char>>) -> bool {
     let mut seen: HashSet<char> = HashSet::new();
-    rows_are_valid(&input, &mut seen) && columns_are_valid(&input, &mut seen) && looking_in_box(input, &mut seen)
+    rows_are_valid(&input, &mut seen)
+        && columns_are_valid(&input, &mut seen)
+        && looking_in_box(input, &mut seen)
 }
 
 fn looking_in_box(input: Vec<Vec<char>>, seen: &mut HashSet<char>) -> bool {
@@ -26,10 +28,13 @@ fn looking_in_box(input: Vec<Vec<char>>, seen: &mut HashSet<char>) -> bool {
 }
 
 fn box_by_box(vec: Vec<char>, seen: &mut HashSet<char>) -> bool {
-    seen.clear();
 
+    seen.clear();
     for (i, ch) in vec.iter().enumerate() {
-        verify_existing_numbers(*ch, seen);
+        if !verify_existing_numbers(*ch, seen) {
+            return false;
+        }
+
         if i == 8 || i == 17 {
             seen.clear();
         }
@@ -37,7 +42,7 @@ fn box_by_box(vec: Vec<char>, seen: &mut HashSet<char>) -> bool {
     true
 }
 
-fn rows_are_valid(input: &Vec<Vec<char>>, seen: &mut HashSet<char>) -> bool {
+fn rows_are_valid(input: &[Vec<char>], seen: &mut HashSet<char>) -> bool {
     seen.clear();
 
     input.iter().all(|x| {
@@ -46,14 +51,12 @@ fn rows_are_valid(input: &Vec<Vec<char>>, seen: &mut HashSet<char>) -> bool {
     })
 }
 
-fn columns_are_valid(input: &Vec<Vec<char>>, seen: &mut HashSet<char>) -> bool {
+fn columns_are_valid(input: &[Vec<char>], seen: &mut HashSet<char>) -> bool {
     seen.clear();
 
     (0..9).all(|x| {
         seen.clear();
-        input
-            .iter()
-            .all(|y| verify_existing_numbers(y[x], seen))
+        input.iter().all(|y| verify_existing_numbers(y[x], seen))
     })
 }
 
