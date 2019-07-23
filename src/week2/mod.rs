@@ -5,3 +5,8 @@ pub mod exercise29;
 pub mod exercise31;
 pub mod exercise32;
 pub mod exercise34;
+
+
+
+
+pub mod exercise36;
