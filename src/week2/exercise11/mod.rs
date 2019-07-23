@@ -34,14 +34,9 @@ impl MyHashMap {
       }
 
       pub fn remove(&mut self, key: i32) {
-            match self.key.iter().position(|x| *x == key) {
-                  Some(i) => {
-                        self.value.remove(i);
-                        self.key.remove(i);
-                  }
-                  None => {
-                        println!("No element with key = {} found", key);
-                  }
+            if let Some(i) = self.key.iter().position(|x| *x == key) {
+                  self.value.remove(i);
+                  self.key.remove(i);
             };
       }
 }
