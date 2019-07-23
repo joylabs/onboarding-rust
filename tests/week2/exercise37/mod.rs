@@ -6,14 +6,13 @@ fn one_word_pattern() {
     let s = "abcd";
     let t = "abcde";
     let ch = 'e';
-    assert_eq!(ch,find_the_difference(s, t));
+    assert_eq!(ch, find_the_difference(s, t));
 }
 
 #[test]
 fn two_word_pattern() {
-    let s = "abba";
+    let s = "abbaba";
     let t = "ababa";
-    let ch = 'a';
-    assert_eq!(ch,find_the_difference(s, t));
+    let ch = 'b';
+    assert_eq!(ch, find_the_difference(s, t));
 }
-
