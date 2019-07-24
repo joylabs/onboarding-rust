@@ -11,7 +11,6 @@ pub fn special_equivalent(input: Vec<String>) -> i32 {
         even.append(&mut odd);
         groups.insert(even.into_iter().collect());
     });
-    println!("{:?}", groups);
     groups.len() as i32
 }
 
