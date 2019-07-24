@@ -8,3 +8,4 @@ pub mod exercise33;
 pub mod exercise34;
 pub mod exercise35;
 pub mod exercise36;
+pub mod exercise37;
