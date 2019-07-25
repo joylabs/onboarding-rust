@@ -7,3 +7,11 @@ fn test_week2_exercise17_example1() {
     let output = "ball".to_string();
     assert_eq!(output, most_common_word(paragraph, banned));
 }
+
+#[test]
+fn test_week2_exercise17_example2() {
+    let paragraph = "a, a, a, a, b,b,b,c, c".to_string();
+    let banned = vec!["a".to_string()];
+    let output = "b".to_string();
+    assert_eq!(output, most_common_word(paragraph, banned));
+}
