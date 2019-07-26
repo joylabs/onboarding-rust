@@ -15,3 +15,4 @@ pub mod exercise13;
 pub mod exercise14;
 pub mod exercise16;
 pub mod exercise17;
+pub mod exercise18;
