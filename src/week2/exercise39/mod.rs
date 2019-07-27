@@ -2,11 +2,21 @@ use std::collections::HashMap;
 
 pub fn most_common(paragraph: String, banned: Vec<String>) -> String {
     let mut count_words = HashMap::new();
+    let mut word: String = String::from("");
 
-    paragraph.split_whitespace().for_each(|word| {
-        let count = count_words.entry(valid_word(word)).or_insert(0);
-        *count += 1;
-    });
+    for i in paragraph.chars() {
+        if i.is_alphabetic() {
+            word.push(i);
+        } else {
+            if !word.is_empty() {
+                let count = count_words.entry(word.clone().to_lowercase()).or_insert(0);
+                *count += 1;
+            }
+            word.clear();
+        }
+    }
+    count_words.insert(word, 1);
+
     count_words
         .iter()
         .filter(|(key, _)| !banned.contains(*key))
@@ -17,9 +27,3 @@ pub fn most_common(paragraph: String, banned: Vec<String>) -> String {
         .to_string()
 }
 
-fn valid_word(word: &str) -> String {
-    word.chars()
-        .filter(|c| c.is_alphanumeric())
-        .collect::<String>()
-        .to_lowercase()
-}
