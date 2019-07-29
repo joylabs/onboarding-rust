@@ -1,5 +1,4 @@
 pub fn sorrounded_regions(board: &mut Vec<Vec<char>>) {
-
     if board.is_empty() {
         return;
     }
@@ -10,7 +9,7 @@ pub fn sorrounded_regions(board: &mut Vec<Vec<char>>) {
             search_recursive(board, 0, i as i32, '0');
         }
         if board[board.len() - 1][i] == 'O' {
-            search_recursive(board, (board.len() - 1) as i32, i as i32, '0');
+            search_recursive(board, (board.len() - 1) as i32, i as i32, '0' );
         }
     });
 
@@ -39,16 +38,16 @@ pub fn sorrounded_regions(board: &mut Vec<Vec<char>>) {
 fn search_recursive(regions: &mut Vec<Vec<char>>, i: i32, j: i32, ch: char) {
 
     regions[i as usize][j as usize] = ch;
-    let cord: Vec<(i32, i32)> = vec![(-1, 0), (0, 1), (0, -1), (1, 0)];
+    let cord = vec![(-1, 0), (0, 1), (0, -1), (1, 0)];
 
-    for (a, _) in cord.iter().enumerate() {
-        if i + cord[a].1 >= 0
-            && j + cord[a].0 < regions[0].len() as i32
-            && i + cord[a].1 < regions.len() as i32
-            && j + cord[a].0 >= 0
-            && regions[(i + cord[a].1) as usize][(j + cord[a].0) as usize] == 'O'
+    for (x, y) in cord.iter(){
+        if i + y >= 0
+            && j + x< regions[0].len() as i32
+            && i + y < regions.len() as i32
+            && j + x >= 0
+            && regions[(i + y) as usize][(j + x) as usize] == 'O'
         {
-            search_recursive(regions, i + cord[a].1, j + cord[a].0, ch);
+            search_recursive(regions, i + y, j + x, ch);
         }
     }
 }
