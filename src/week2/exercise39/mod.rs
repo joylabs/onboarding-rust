@@ -1,20 +1,16 @@
 use std::collections::HashMap;
 
 pub fn most_common_not_banned(paragraph: String, banned: Vec<String>) -> String {
-    let mut count_words = HashMap::new();
-
-    paragraph
-        .to_lowercase()
-        .chars()
-        .map(|ch| if ch.is_alphabetic() { ch } else { ' ' })
-        .collect::<String>()
-        .split_whitespace()
-        .for_each(|word| {
-            let count = count_words.entry(word.to_string()).or_insert(0);
-            *count += 1;
+    let word_counts = paragraph
+        .split(|c: char| !c.is_alphabetic())
+        .filter(|w| !w.is_empty())
+        .fold(HashMap::new(), |mut acc, x| {
+            *acc.entry((*x).to_string().clone().to_lowercase())
+                .or_insert(0) += 1;
+            acc
         });
 
-    count_words
+    word_counts
         .iter()
         .filter(|(key, _)| !banned.contains(*key))
         .map(|(key, value)| (value, key))
