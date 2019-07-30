@@ -1,4 +1,4 @@
-pub mod exercise1;
+// pub mod exercise1;
 pub mod exercise2;
 pub mod exercise3;
 pub mod exercise4;
@@ -18,8 +18,3 @@ pub mod exercise16;
 pub mod exercise17;
 pub mod exercise18;
 pub mod exercise19;
-
-pub mod exercise20;
-pub mod exercise21;
-pub mod exercise22;
-pub mod exercise24;
