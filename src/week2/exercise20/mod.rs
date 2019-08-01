@@ -17,7 +17,8 @@ fn parse_formula(formula: &str) -> BTreeMap<String, i32> {
       let mut atoms_map: BTreeMap<String, i32> = BTreeMap::new();
       let mut new_formula: Vec<String> = Vec::new();
       let mut atom = String::new();
-      let mut num_atom = String::new();
+      let mut is_last_letter = false;
+      let mut is_last_digit = false;
 
       formula.chars().for_each(|c| {
             if c == '(' || c == ')' {
@@ -25,45 +26,45 @@ fn parse_formula(formula: &str) -> BTreeMap<String, i32> {
                         new_formula.push(atom.clone());
                         atom.clear();
                   }
-                  if !num_atom.is_empty() {
-                        new_formula.push(num_atom.clone());
-                        num_atom.clear();
-                  }
+
                   new_formula.push(c.to_string());
+                  is_last_letter = false;
+                  is_last_digit = false;
             } else if c.is_digit(10) {
-                  num_atom.push(c);
+                  if is_last_letter {
+                        new_formula.push(atom.clone());
+                        atom.clear();
+                  }
+                  atom.push(c);
+                  is_last_letter = false;
+                  is_last_digit = true;
             } else if c.is_lowercase() || atom.is_empty() {
+                  is_last_letter = true;
+                  is_last_digit = false;
                   atom.push(c);
             } else {
                   if !atom.is_empty() {
                         new_formula.push(atom.clone());
                         atom.clear();
                   }
-                  if !num_atom.is_empty() {
-                        new_formula.push(num_atom.clone());
-                        num_atom.clear();
-                  }
+
                   atom.push(c);
+                  is_last_letter = true;
+                  is_last_digit = false;
             }
       });
 
       if !atom.is_empty() {
             new_formula.push(atom);
       }
-      if !num_atom.is_empty() {
-            new_formula.push(num_atom);
-      }
 
-      // println!("New formula: {:?}", new_formula);
+      println!("New formula: {:?}", new_formula);
 
       let mut num_atom: Vec<i32> = vec![1];
       let mut is_close_parenthesis = false;
       let mut is_num = false;
 
-      let mut atoms: Vec<String> = Vec::new();
-
       new_formula.iter_mut().rev().for_each(|s| {
-            // println!("num_atom: {:?}", num_atom);
             if s.parse::<i32>().is_ok() {
                   is_num = true;
                   let n = num_atom[num_atom.len() - 1];
@@ -79,22 +80,19 @@ fn parse_formula(formula: &str) -> BTreeMap<String, i32> {
                   is_num = false;
             } else {
                   let n = num_atom[num_atom.len() - 1];
-                  for _ in 0..n {
-                        atoms.push(s.clone());
-                  }
+                  let atom_count = atoms_map.entry(s.clone()).or_insert(0);
+                  *atom_count += n;
+                  println!("s: {}", s);
                   if num_atom.len() > 1 && is_num {
                         num_atom.pop();
                   }
+
                   is_close_parenthesis = false;
                   is_num = false;
             }
-      });
 
-      // println!("atoms: {:?}", atoms);
-
-      atoms.iter().for_each(|s| {
-            let atom_count = atoms_map.entry(s.clone()).or_insert(0);
-            *atom_count += 1;
+            println!("num_atom: {:?}", num_atom);
+            println!("atoms_map: {:?}", atoms_map);
       });
 
       atoms_map
