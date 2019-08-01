@@ -28,13 +28,11 @@ fn compare_lexicographically(s1: &str, s2: &str) -> Ordering {
             Ordering::Greater
       } else if s1.len() < s2.len() {
             Ordering::Less
+      } else if s1 < s2 {
+            Ordering::Greater
+      } else if s1 > s2 {
+            Ordering::Less
       } else {
-            if s1 < s2 {
-                  Ordering::Greater
-            } else if s1 > s2 {
-                  Ordering::Less
-            } else {
-                  Ordering::Equal
-            }
+            Ordering::Equal
       }
 }
