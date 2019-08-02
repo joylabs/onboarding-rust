@@ -16,3 +16,10 @@ fn test_week1_exercise20_example2() {
     assert_eq!(expected, valid_anagram(input_1, input_2));
 }
 
+#[test]
+fn test_week1_exercise20_example3() {
+    let input_1 = "´ra&t".to_string();
+    let input_2 = "&ta´r".to_string();
+    let expected = true;
+    assert_eq!(expected, valid_anagram(input_1, input_2));
+}
