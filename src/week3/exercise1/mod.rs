@@ -9,19 +9,19 @@ pub fn lemonade_change(bills: Vec<i32>) -> bool {
     change_map.insert(5, 1);
     change_map.insert(10, 0);
 
-    for i in 1..bills.len() {
-        if bills[i] == 5 {
+    for bill in bills.into_iter().skip(1) {
+        if bill == 5 {
             modify_count(&mut change_map, 5, Operation::ADD);
 
-        } else if bills[i] == 10 && *change_map.get(&5).unwrap() >= 1 {
+        } else if bill == 10 && *change_map.get(&5).unwrap() >= 1 {
             modify_count(&mut change_map, 5, Operation::SUBSTRACT(1));
             modify_count(&mut change_map, 10, Operation::ADD);
 
-        } else if bills[i] == 20 && (*change_map.get(&5).unwrap() >= 1 && *change_map.get(&10).unwrap() >= 1) {
+        } else if bill == 20 && (*change_map.get(&5).unwrap() >= 1 && *change_map.get(&10).unwrap() >= 1) {
             modify_count(&mut change_map, 5, Operation::SUBSTRACT(1));
             modify_count(&mut change_map, 10, Operation::SUBSTRACT(1));
 
-        } else if bills[i] == 20 && (*change_map.get(&5).unwrap() >= 3) {
+        } else if bill == 20 && (*change_map.get(&5).unwrap() >= 3) {
             modify_count(&mut change_map, 5, Operation::SUBSTRACT(3));
         } else {
             return false;
