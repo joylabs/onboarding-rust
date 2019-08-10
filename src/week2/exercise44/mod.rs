@@ -1,33 +1,52 @@
-use std::collections::HashSet;
+use std::collections::HashMap;
+
 
 #[derive(Default)]
 pub struct Trie {
-      elements: HashSet<String>,
-      element_parts: HashSet<String>,
+      children: HashMap<char, Trie>,
+      is_word: bool,
 }
 
 impl Trie {
       pub fn new() -> Self {
-            Self {
-                  elements: HashSet::new(),
-                  element_parts: HashSet::new(),
+            Trie {
+                  children: HashMap::new(),
+                  is_word: false,
             }
       }
 
       pub fn insert(&mut self, word: String) {
-            let word = word.chars().fold("".to_string(), |mut acc, c| {
-                  acc.push(c);
-                  self.element_parts.insert(acc.clone());
-                  acc
-            });
-            self.elements.insert(word);
+            let mut nodo = self;
+            for ch in word.chars() {
+                  nodo = nodo.children.entry(ch).or_insert_with(Trie::new);
+            }
+            nodo.is_word = true;
       }
 
       pub fn search(&self, word: String) -> bool {
-            self.elements.contains(&word)
+            let mut nodo = self;
+            for ch in word.chars() {
+                  if nodo.children.contains_key(&ch) {
+                        nodo = nodo.children.get(&ch).unwrap();
+                  } else {
+                        return false;
+                  }
+            }
+            if nodo.is_word {
+                  return true;
+            }
+            false
       }
 
       pub fn starts_with(&self, prefix: String) -> bool {
-            self.element_parts.contains(&prefix)
+            let mut nodo = self;
+            for ch in prefix.chars() {
+                  if nodo.children.contains_key(&ch) {
+                        nodo = nodo.children.get(&ch).unwrap();
+                  } else {
+                        return false;
+                  }
+            }
+            true
       }
 }
