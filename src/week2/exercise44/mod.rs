@@ -1,9 +1,8 @@
 use std::collections::HashMap;
 
-
 #[derive(Default)]
 pub struct Trie {
-      children: HashMap<char, Trie>,
+      children: HashMap<char, Box<Trie>>,
       is_word: bool,
 }
 
@@ -16,9 +15,12 @@ impl Trie {
       }
 
       pub fn insert(&mut self, word: String) {
-            let mut nodo = self;
-            for ch in word.chars() {
-                  nodo = nodo.children.entry(ch).or_insert_with(Trie::new);
+        let mut nodo = self;
+             for ch in word.chars() {
+                  nodo = nodo
+                        .children
+                        .entry(ch)
+                        .or_insert_with(|| Box::new(Trie::new()));
             }
             nodo.is_word = true;
       }
