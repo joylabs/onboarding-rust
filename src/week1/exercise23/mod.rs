@@ -1,16 +1,19 @@
 pub fn surrounded_regions(mut board: &mut Vec<Vec<char>>) {
-    // Iterate over board
-    for x in 0..board.len() {
-        for y in 0..board[x].len() {
-            if x == 0
-                || x == ((board.len() as i32) - 1) as usize
-                || y == 0
-                || y == ((board[x].len() as i32) - 1) as usize && board[x][y] == 'O'
-            {
-                dfs(&mut board, x as i32, y as i32);
-            }
-        }
+    let row = board.len();
+    if row == 0 {
+        return;
     }
+    let col = board[0].len();
+
+
+    // Iterate over board
+    (0..row).for_each(|x| {
+        (0..col).for_each(|y| {
+            if [0, row - 1].contains(&x) || [0, col - 1].contains(&y) && board[x][y] == 'O' {
+                dfs(&mut board, x, y);
+            }
+        });
+    });
     for x in board {
         for y in x.iter_mut() {
             if *y == 'O' {
@@ -23,20 +26,16 @@ pub fn surrounded_regions(mut board: &mut Vec<Vec<char>>) {
     }
 }
 
-fn dfs(board: &mut Vec<Vec<char>>, x: i32, y: i32) {
-    if board[x as usize][y as usize] == 'O' {
-        board[x as usize][y as usize] = '$';
-        if x > 0 && board[(x - 1) as usize][y as usize] == 'O' {
-            dfs(board, x - 1, y);
+fn dfs(board: &mut Vec<Vec<char>>, x: usize, y: usize) {
+    if (0..board.len()).contains(&x) && (0..board[0].len()).contains(&y) && board[x][y] == 'O' {
+        board[x][y] = '$';
+        if let Some(xi) = x.checked_sub(1) {
+            dfs(board, xi, y);
         }
-        if y < (board[x as usize].len() as i32) - 1 && board[x as usize][(y + 1) as usize] == 'O' {
-            dfs(board, x, y + 1);
-        }
-        if x < (board.len() as i32) - 1 && board[(x + 1) as usize][y as usize] == 'O' {
-            dfs(board, x + 1, y);
-        }
-        if y > 1 && board[x as usize][(y - 1) as usize] == 'O' {
-            dfs(board, x, y - 1);
+        dfs(board, x, y + 1);
+        dfs(board, x + 1, y);
+        if let Some(yi) = y.checked_sub(1) {
+            dfs(board, x, yi);
         }
     }
 }
