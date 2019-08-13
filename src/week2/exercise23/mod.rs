@@ -18,7 +18,7 @@ fn find_word(mut board: Vec<Vec<char>>, word: Vec<char>) -> bool {
         false
 }
 
-fn search_for_word(mut board: &mut Vec<Vec<char>>, word: &Vec<char>, position: usize, row: i32, col: i32) -> bool {
+fn search_for_word(mut board: &mut Vec<Vec<char>>, word: &[char], position: usize, row: i32, col: i32) -> bool {
         if row < 0 || 
         row >= board.len() as i32 || 
         col < 0 || 
