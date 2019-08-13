@@ -9,7 +9,7 @@ fn test_week2_exercise23_example1() {
         vec!['i','f','l','v']
     ];
     let words = vec!["oath".to_string(),"pea".to_string(),"eat".to_string(),"rain".to_string()];
-    let expected = vec!["eat".to_string(),"oath".to_string()];
+    let expected = vec!["oath".to_string(),"eat".to_string()];
     assert_eq!(expected, find_words(board, words));
 }
 
