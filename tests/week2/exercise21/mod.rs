@@ -120,4 +120,3 @@ fn test_week2_exercise21_example6() {
     let expected = "otif".to_string();
     assert_eq!(expected, longest_word(input));
 }
-
