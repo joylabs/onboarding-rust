@@ -6,18 +6,17 @@ pub fn longest_word(mut words: Vec<String>) -> String {
 
     words.sort();
 
-    for mut word in words {
-        let character;
+    for word in words {
+
         if word.len() == 1 {
             hash_set_words.insert(word.clone());
             if word.len() > longest_first_word.len() {
                 longest_first_word = word;
             }
         } else {
-            character = word.pop().unwrap();
+            let one_less_char = word.len() - 1;
 
-            if hash_set_words.contains(&word) {
-                word.push(character);
+            if hash_set_words.contains(&word[..one_less_char]) {
                 hash_set_words.insert(word.clone());
                 if word.len() > longest_first_word.len() {
                     longest_first_word = word;
