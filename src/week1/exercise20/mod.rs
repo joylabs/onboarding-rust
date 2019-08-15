@@ -1,13 +1,30 @@
-pub fn valid_anagram(input_1: String, input_2: String) -> bool {
-    let prime_numbers = generate_prime_numbers(30);
+use std::collections::HashMap;
 
+pub fn valid_anagram(input_1: String, input_2: String) -> bool {
+    let mut prime_map = HashMap::new();
+    let mut prime_counter: i32 = -1;
+    let mut char_sum = 0;
+
+    let prime_numbers = generate_prime_numbers(100);
     for x in input_1.chars() {
-        print!("{}", x);
-        println!("{}", x as u32 - 96);
+        prime_map.entry(x).or_insert_with(|| {
+            prime_counter += 1;
+            prime_numbers[prime_counter as usize]
+        });
+
+        char_sum += prime_map.get(&x).unwrap() * (x as i32);
     }
 
+    for x in input_2.chars() {
+        prime_map.entry(x).or_insert_with(|| {
+            prime_counter += 1;
+            prime_numbers[prime_counter as usize]
+        });
 
-    false
+        char_sum -= prime_map.get(&x).unwrap() * (x as i32);
+    }
+
+    char_sum == 0
 }
 
 pub fn valid_anagram_2(input_1: String, input_2: String) -> bool {
@@ -41,6 +58,6 @@ fn generate_prime_numbers(last_number: i32) -> Vec<i32> {
         index += 1;
 
     }
-    println!("{:?}", prime_numbers);
+
     prime_numbers
 }
