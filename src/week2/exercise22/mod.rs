@@ -29,23 +29,16 @@ impl Trie {
       }
 
       pub fn search(&self, word: String) -> bool {
-            let mut node = &self.root;
-            
-            for c in word.chars() {
-                  if node.contains_key(c) {
-                        node = match node.get_node(c) {
-                              Some(n) => n,
-                              None => panic!("Could not retrieve node..."),
-                        };
-                  } else {
-                        return false;
-                  }
-            }
+            let node = self.search_nodes(word);
 
-            node.get_is_end()
+            node.is_some() && node.unwrap().get_is_end()
       }
 
       pub fn starts_with(&self, prefix: String) -> bool {
+            self.search_nodes(prefix).is_some()
+      }
+
+      pub fn search_nodes(&self, prefix: String) -> Option<&TrieNode> {
             let mut node = &self.root;
             
             for c in prefix.chars() {
@@ -55,11 +48,11 @@ impl Trie {
                               None => panic!("Could not retrieve node..."),
                         };
                   } else {
-                        return false;
+                        return None;
                   }
             }
 
-            true
+            Some(node)
       }
 }
 
