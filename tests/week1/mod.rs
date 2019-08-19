@@ -14,10 +14,10 @@ mod exercise20;
 mod exercise21;
 mod exercise22;
 mod exercise23;
-mod exercise5;
+
 mod exercise3;
 mod exercise4;
-mod exercise6;
+mod exercise5;
 mod exercise7;
 mod exercise8;
 mod exercise9;

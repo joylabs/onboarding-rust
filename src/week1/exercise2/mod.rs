@@ -11,12 +11,3 @@ pub fn matrix_transpose(input: Vec<Vec<i64>>) -> Vec<Vec<i64>> {
     }
     result
 }
-
-// ONE_LINE
-// pub fn matrix_transpose(input: Vec<Vec<i64>>) -> Vec<Vec<i64>> {
-//     let width = input[0].len();
-//     let iter = input.into_iter().flatten();
-//     (0..width)
-//         .map(|i| iter.clone().skip(i).step_by(width).collect())
-//         .collect()
-// }
