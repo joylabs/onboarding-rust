@@ -1,6 +1,5 @@
 pub fn reverse_vowels(input: String) -> String {
     let mut vowels = input.chars().filter(|l| is_vowel(*l)).collect::<Vec<_>>();
-    println!("{}: {:?}", input, vowels);
     input
         .chars()
         .map(|l| {
