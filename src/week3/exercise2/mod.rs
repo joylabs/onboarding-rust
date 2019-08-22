@@ -3,7 +3,7 @@ pub fn is_subsequence(s: String, t: String) -> bool {
         return true;
     }
 
-    let s: Vec<char> = s.chars().map(|ch| ch).collect();
+    let s: Vec<char> = s.chars().collect();
     let t = t.chars().fold(0, |mut acc, ch| {
         if acc < s.len() && ch == s[acc] {
             acc += 1;
