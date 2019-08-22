@@ -8,7 +8,6 @@ fn search_target(nums: &[i32], target: i32, min: i32, max: i32) -> i32 {
       }
 
       let index = ((max + min) as f32 / 2.0).ceil() as usize;
-      // println!("min: {}, max: {}, index: {}", min, max, index);
 
       if nums[index] == target {
             index as i32
