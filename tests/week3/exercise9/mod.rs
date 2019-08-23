@@ -13,3 +13,24 @@ fn test_week3_exercise9_example2() {
     let expected = vec![vec![1, 5]];;
     assert_eq!(expected, merge(input));
 }
+
+#[test]
+fn test_week3_exercise9_example3() {
+    let input = vec![];
+    let expected: Vec<Vec<i32>> = vec![];
+    assert_eq!(expected, merge(input));
+}
+
+#[test]
+fn test_week3_exercise9_example4() {
+    let input = vec![vec![1, 4], vec![0, 4]];
+    let expected = vec![vec![0, 4]];;
+    assert_eq!(expected, merge(input));
+}
+
+#[test]
+fn test_week3_exercise9_example5() {
+    let input = vec![vec![1, 4], vec![2, 3]];
+    let expected = vec![vec![1, 4]];;
+    assert_eq!(expected, merge(input));
+}
