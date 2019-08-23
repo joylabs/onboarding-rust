@@ -1,4 +1,4 @@
-use onboarding_rust::week2::exercise30::valid_sudoku;
+use onboarding_rust::week2::exercise47::valid_sudoku;
 
 #[test]
 fn sodoku_one_test() {
