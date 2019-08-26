@@ -2,14 +2,15 @@ pub fn is_subsequence(s: String, t: String) -> bool {
     if s.is_empty() {
         return true;
     }
-
-    let s: Vec<char> = s.chars().collect();
+    let len = s.len();
+    let mut s  = s.chars();
+    let mut cha = s.next().unwrap();
     let t = t.chars().fold(0, |mut acc, ch| {
-        if acc < s.len() && ch == s[acc] {
-            acc += 1;
+        if acc < len  && cha == ch{
+                 acc += 1;
+                 cha = s.next().unwrap_or('N');
         }
         acc
     });
-
-    t == s.len()
+    t == len
 }
