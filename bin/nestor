@@ -18,5 +18,7 @@ curl -X POST "https://api.staging.bench.joylabs.com/api/v1/project/on-boarding-r
 -H "Content-Type: application/vnd.criterion-rs.text" \
 -H "X-API-KEY: 8966282138254608984357961d90ae9e" --data-binary @benches/last_bench.txt
 
+rm -f benches/last_bench.txt
+
 echo
 echo "=> $0 finished in $SECONDS sec"
