@@ -23,3 +23,11 @@ fn test_week3_exercise10_example3() {
     let expected: f64 = 0.25000;
     assert_eq!(expected, my_pow(x, n));
 }
+
+#[test]
+fn test_week3_exercise10_example4() {
+    let x = 2.00000;
+    let n = 0;
+    let expected: f64 = 1.0;
+    assert_eq!(expected, my_pow(x, n));
+}
