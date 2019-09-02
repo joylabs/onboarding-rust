@@ -17,3 +17,4 @@ pub mod exercise15;
 pub mod exercise16;
 pub mod exercise17;
 pub mod exercise18;
+pub mod exercise19;
