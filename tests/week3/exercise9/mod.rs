@@ -10,7 +10,7 @@ fn test_week3_exercise9_example1() {
 #[test]
 fn test_week3_exercise9_example2() {
     let input = vec![vec![1, 4], vec![4, 5]];
-    let expected = vec![vec![1, 5]];;
+    let expected = vec![vec![1, 5]];
     assert_eq!(expected, merge(input));
 }
 
