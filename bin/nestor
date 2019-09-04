@@ -1,0 +1,24 @@
+#!/bin/bash
+
+set -e
+
+docker-compose run build bin/test
+
+echo "=> Running benchmarks"
+echo "=> cargo bench in $PWD"
+
+# XXX The line "Gnuplot not found, disabling plotting" breaks our parser
+cargo bench $@ | grep -v Gnuplot | tee benches/last_bench.txt
+
+echo "=> Submitting results"
+
+#Be sure you update your project name and your API Key
+curl -X POST "https://api.staging.bench.joylabs.com/api/v1/project/on-boarding-rust/bench" \
+-H "accept: application/json" \
+-H "Content-Type: application/vnd.criterion-rs.text" \
+-H "X-API-KEY: 8966282138254608984357961d90ae9e" --data-binary @benches/last_bench.txt
+
+rm -f benches/last_bench.txt
+
+echo
+echo "=> $0 finished in $SECONDS sec"

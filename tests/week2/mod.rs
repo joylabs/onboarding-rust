@@ -1,3 +1,4 @@
+mod exercise8;
 mod exercise1;
 mod exercise10;
 mod exercise11;
@@ -19,5 +20,4 @@ mod exercise4;
 mod exercise5;
 mod exercise6;
 mod exercise7;
-
 mod exercise9;

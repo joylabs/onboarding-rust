@@ -16,7 +16,6 @@ pub fn number_of_islands(grid: Vec<Vec<char>>) -> i32 {
 
 }
 
-
 fn searching_land(lands: &mut Vec<Vec<char>>, i: usize, j: usize) {
 
     lands[i][j] = '0';

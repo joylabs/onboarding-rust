@@ -1,7 +1,7 @@
 use onboarding_rust::week1::exercise22::number_of_islands;
 
 #[test]
-fn test_week1_exercise3_example1() {
+fn test_week1_exercise22_example1() {
     let input = vec![
         vec!['1', '1', '1', '1', '0'],
         vec!['1', '1', '0', '1', '0'],
@@ -13,7 +13,7 @@ fn test_week1_exercise3_example1() {
 }
 
 #[test]
-fn test_week1_exercise3_example2() {
+fn test_week1_exercise22_example2() {
     let input = vec![
         vec!['1', '1', '0', '0', '0'],
         vec!['1', '1', '0', '0', '0'],
@@ -24,7 +24,7 @@ fn test_week1_exercise3_example2() {
     assert_eq!(expected, number_of_islands(input));
 }
 #[test]
-fn test_week1_exercise3_example3() {
+fn test_week1_exercise22_example3() {
     let input = vec![
         vec!['1', '1', '0', '1', '0'],
         vec!['1', '1', '1', '0', '1'],

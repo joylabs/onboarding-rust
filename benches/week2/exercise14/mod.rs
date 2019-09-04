@@ -1,4 +1,3 @@
-
 use criterion::black_box;
 use criterion::Criterion;
 

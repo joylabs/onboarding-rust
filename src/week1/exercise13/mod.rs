@@ -12,7 +12,6 @@ pub fn reverse_vowels_string(input: &str) -> String {
         .collect()
 }
 
-
 fn is_vowel(letter: char) -> bool {
     match letter.to_ascii_lowercase() {
         'a' | 'e' | 'i' | 'o' | 'u' => true,
