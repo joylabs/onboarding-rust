@@ -1,18 +1,21 @@
 pub fn my_pow(x: f64, n: i32) -> f64 {
-    if n == 0 {
-        1.0
-    } else if n < 0 {
-        trunc_to_five_decimal_precision(1.0 / pow_to_n(x, x, n.abs()))
+    if n < 0 {
+        trunc_to_five_decimal_precision(1.0 / pow_to_n(x, n.abs()))
     } else {
-        trunc_to_five_decimal_precision(pow_to_n(x, x, n))
+        trunc_to_five_decimal_precision(pow_to_n(x, n))
     }
 }
 
-fn pow_to_n(acc: f64, base: f64, n: i32) -> f64 {
-    if n == 1 {
-        return acc;
+fn pow_to_n(base: f64, n: i32) -> f64 {
+    if n == 0 {
+        1.0
+    } else if (n % 2) == 0 {
+        let val = pow_to_n(base, n / 2);
+        val * val
+    } else {
+        let val = pow_to_n(base, n / 2);
+        val * val * base
     }
-    pow_to_n(acc * base, base, n - 1)
 }
 
 fn trunc_to_five_decimal_precision(x: f64) -> f64 {
