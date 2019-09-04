@@ -11,7 +11,6 @@ pub fn find_circle_num(input: Vec<Vec<i32>>) -> i32 {
     circles
 }
 
-
 fn dfs(i: usize, m: &[Vec<i32>], visited: &mut Vec<i32>) {
     visited[i] = 1;
     (0..m.len()).for_each(|j| {
