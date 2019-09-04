@@ -1,12 +1,7 @@
 pub fn array_pair_sum(mut nums: Vec<i32>) -> i32 {
-      nums.sort();
-      let mut i = 0;
-      let mut sum = 0;
-
-      while i < nums.len() {
-            sum += nums[i];
-            i += 2;
-      }
-
-      sum
+    nums.sort();
+    nums.into_iter()
+        .enumerate()
+        .map(|(i, x)| if i % 2 == 0 { x } else { 0 })
+        .sum()
 }
