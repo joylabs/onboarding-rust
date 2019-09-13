@@ -39,3 +39,21 @@ fn count_characters(points: Vec<Vec<usize>>) -> Vec<i32> {
             acc
         })
 }
+//"ababcbacadefegdehijhklij"
+pub fn partition_labels_2(s: String) -> Vec<i32> {
+    let mut cur = 0;
+    let mut res = vec![];
+    let mut len = 0;
+
+    for (mut idx, c) in s.chars().enumerate() {
+        let last = s.rfind(c).unwrap();
+        cur = std::cmp::max(cur, last);
+        len += 1;
+        if idx == cur {
+            res.push(len);
+            len = 0;
+        }
+        idx += 1;
+    }
+    res
+}
