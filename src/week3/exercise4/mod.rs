@@ -56,4 +56,4 @@ fn count_characters(points: Vec<Vec<usize>>) -> Vec<i32> {
 //         idx += 1;
 //     }
 //     res
-}
+//}
