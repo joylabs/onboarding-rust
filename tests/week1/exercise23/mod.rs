@@ -36,8 +36,6 @@ fn test_week1_exercise23_ex2() {
     assert_eq!(expected, input);
 }
 
-
-//[["X","O","X","O","X","O"],["O","X","X","X","X","X"],["X","X","X","X","X","O"],["O","X","O","X","O","X"]]
 #[test]
 fn test_week1_exercise23_ex3() {
     let mut input = vec![
