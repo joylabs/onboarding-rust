@@ -40,3 +40,21 @@ pub fn unique_morse_representations_2(words: Vec<String>) -> i32 {
     morse_set.len() as i32
 }
 
+pub fn unique_morse_representations_3(words: Vec<String>) -> i32 {
+    const MORSE_CODE: [&str; 26] = [
+        ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--",
+        "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--",
+        "--..",
+    ];
+
+      words
+         .iter()
+         .fold(&mut HashSet::new(), |acc, word| {
+             acc.insert(
+                 word.chars()
+                     .fold(String::new(), |acc2, c| acc2 + MORSE_CODE[c as usize - 97]),
+             );
+             acc
+         })
+         .len() as i32
+}

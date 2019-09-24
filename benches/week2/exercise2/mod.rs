@@ -2,7 +2,7 @@ use criterion::black_box;
 use criterion::Criterion;
 
 use onboarding_rust::week2::exercise2::{
-    unique_morse_representations, unique_morse_representations_2,
+    unique_morse_representations, unique_morse_representations_2, unique_morse_representations_3,
 };
 
 #[allow(dead_code)]
@@ -33,10 +33,24 @@ fn bench_unique_morse_representations_2(c: &mut Criterion) {
     });
 }
 
+#[allow(dead_code)]
+fn bench_unique_morse_representations_3(c: &mut Criterion) {
+    c.bench_function("morse representation 3", |b| {
+        b.iter(|| {
+            unique_morse_representations_3(black_box(vec![
+                "gin".to_string(),
+                "zen".to_string(),
+                "gig".to_string(),
+                "msg".to_string(),
+            ]))
+        })
+    });
+}
 
 criterion_group!(
     benchmarks,
     bench_unique_morse_representations,
     bench_unique_morse_representations_2,
+    bench_unique_morse_representations_3,
 );
 criterion_main!(benchmarks);
