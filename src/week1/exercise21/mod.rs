@@ -2,7 +2,7 @@ pub fn find_circle_num(m: Vec<Vec<i32>>) -> i32 {
     let mut circles = 0;
     let mut visited: Vec<bool> = vec![false; m.len()];
     for i in 0..m.len() {
-        if !visited[i as usize] {
+        if !visited[i] {
             dfs(&m.to_vec(), &mut visited, i as i32);
             circles += 1;
         }

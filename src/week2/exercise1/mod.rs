@@ -1,6 +1,7 @@
-pub fn jewels_in_stones(j: String, s: String) -> i32 {
-    s.chars()
-        .filter(|s| j.contains(*s))
+pub fn jewels_in_stones(jewels: String, stones: String) -> i32 {
+    stones
+        .chars()
+        .filter(|s| jewels.contains(*s))
         .collect::<String>()
         .len() as i32
 }
