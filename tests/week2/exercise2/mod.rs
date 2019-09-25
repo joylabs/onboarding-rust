@@ -1,7 +1,7 @@
 use onboarding_rust::week2::exercise2::unique_morse_representations;
 
 #[test]
-fn test_week2_exercise1_two() {
+fn test_week2_exercise2_two() {
     let input = vec![
         "gin".to_string(),
         "zen".to_string(),
@@ -13,7 +13,7 @@ fn test_week2_exercise1_two() {
 }
 
 #[test]
-fn test_week2_exercise1_five() {
+fn test_week2_exercise2_five() {
     let input = vec![
         "andres".to_string(),
         "betty".to_string(),
