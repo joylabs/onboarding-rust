@@ -1,18 +1,25 @@
+use std::collections::HashSet;
+
 pub fn is_happy(n: i32) -> bool {
-    let mut iterations = 0;
+    let mut set: HashSet<i32> = HashSet::new();
     let mut number = sum_of_square_digits(n);
 
-    while (number != 1) && (iterations < 101) {
+    while number != 1 {
         number = sum_of_square_digits(number);
-        iterations += 1;
+        if !set.contains(&number) {
+            set.insert(number);
+        } else {
+            break;
+        }
     }
 
     number == 1
 }
 
 fn sum_of_square_digits(number: i32) -> i32 {
-    number.to_string().chars().fold(0, |acc, n| {
-        let digit = n.to_digit(10).unwrap() as i32;
-        acc + (digit.pow(2))
-    })
+    let mut sum = (number % 10).pow(2);
+    if number >= 10 {
+        sum += sum_of_square_digits(number / 10);
+    }
+    sum
 }
