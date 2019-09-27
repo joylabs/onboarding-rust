@@ -4,12 +4,17 @@ pub fn is_match(s: String, p: String) -> bool {
             return true;
         }
         return false;
-    } else if p.is_empty() {
+    } else if p.is_empty() || (p.len() > s.len() && !p.contains('*')) {
         return false;
     }
 
-    let mut p: Vec<char> = p.chars().collect();
     let mut s: Vec<char> = s.chars().collect();
+    let mut p: Vec<char> = first_pattern_process(&p, &s);
+    println!("p: {:?}", p);
+
+    if p.len() > s.len() && !p.contains(&'*') {
+        return false;
+    }
 
     let preceding_element = p.remove(0);
     let actual_letter = s.remove(0);
@@ -39,6 +44,7 @@ fn dfs_pattern(
                 "s.is_empty() && (actual_letter == preceding_element || preceding_element == '.')"
             );
             let p = process_pattern(p);
+            // println!("p {:?}", p);
             return p.is_empty() || (p.len() == 1 && p[0] == actual_letter);
         }
         actual_letter = s[0];
@@ -61,17 +67,42 @@ fn dfs_pattern(
     }
 }
 
+fn first_pattern_process(p: &str, s: &[char]) -> Vec<char> {
+    let mut processed_patter = Vec::new();
+    let mut asterisk = false;
+    for c in p.chars().rev() {
+        if s.contains(&c) || c == '.' {
+            if asterisk {
+                processed_patter.push('*');
+            }
+            processed_patter.push(c);
+            asterisk = false;
+        } else if c == '*' {
+            asterisk = true;
+        } else if !asterisk {
+            processed_patter.push(c);
+        } else {
+            asterisk = false;
+        }
+    }
+    processed_patter.reverse();
+    processed_patter
+}
+
 fn process_pattern(p: &[char]) -> Vec<char> {
     let mut processed_patter = Vec::new();
     let mut asterisk = false;
+    println!("before p {:?}", p);
     for c in p.iter().rev() {
         if *c == '*' {
             asterisk = true;
         } else if !asterisk {
             processed_patter.push(*c);
+        } else {
             asterisk = false;
         }
     }
     processed_patter.reverse();
+    println!("after processed_patter {:?}", processed_patter);
     processed_patter
 }
