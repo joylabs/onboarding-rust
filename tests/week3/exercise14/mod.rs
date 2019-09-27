@@ -39,3 +39,35 @@ fn test_week3_exercise14_example5() {
     let expected = false;
     assert_eq!(expected, is_match(s, p));
 }
+
+#[test]
+fn test_week3_exercise14_example6() {
+    let s = "".to_owned();
+    let p = ".*".to_owned();
+    let expected = true;
+    assert_eq!(expected, is_match(s, p));
+}
+
+#[test]
+fn test_week3_exercise14_example7() {
+    let s = "".to_owned();
+    let p = ".".to_owned();
+    let expected = false;
+    assert_eq!(expected, is_match(s, p));
+}
+
+#[test]
+fn test_week3_exercise14_example8() {
+    let s = "".to_owned();
+    let p = "".to_owned();
+    let expected = true;
+    assert_eq!(expected, is_match(s, p));
+}
+
+#[test]
+fn test_week3_exercise14_example9() {
+    let s = "a".to_owned();
+    let p = "".to_owned();
+    let expected = false;
+    assert_eq!(expected, is_match(s, p));
+}
