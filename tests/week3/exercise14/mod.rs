@@ -71,3 +71,43 @@ fn test_week3_exercise14_example9() {
     let expected = false;
     assert_eq!(expected, is_match(s, p));
 }
+
+#[test]
+fn test_week3_exercise14_example10() {
+    let s = "abcd".to_owned();
+    let p = "d*".to_owned();
+    let expected = false;
+    assert_eq!(expected, is_match(s, p));
+}
+
+#[test]
+fn test_week3_exercise14_example11() {
+    let s = "ab".to_owned();
+    let p = ".*c".to_owned();
+    let expected = false;
+    assert_eq!(expected, is_match(s, p));
+}
+
+#[test]
+fn test_week3_exercise14_example12() {
+    let s = "aaa".to_owned();
+    let p = "a*a".to_owned();
+    let expected = true;
+    assert_eq!(expected, is_match(s, p));
+}
+
+#[test]
+fn test_week3_exercise14_example13() {
+    let s = "aaa".to_owned();
+    let p = "ab*a*c*a".to_owned();
+    let expected = true;
+    assert_eq!(expected, is_match(s, p));
+}
+
+#[test]
+fn test_week3_exercise14_example14() {
+    let s = "aaa".to_owned();
+    let p = "aaaa".to_owned();
+    let expected = false;
+    assert_eq!(expected, is_match(s, p));
+}
