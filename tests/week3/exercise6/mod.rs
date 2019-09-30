@@ -1,4 +1,4 @@
-use onboarding_rust::week3::exercise10::max_profit;
+use onboarding_rust::week3::exercise6::max_profit;
 
 #[test]
 fn test_best_time_to_buy_one() {
