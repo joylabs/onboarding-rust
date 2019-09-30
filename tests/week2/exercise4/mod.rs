@@ -5,7 +5,9 @@ fn test_week2_exercise4_ex1() {
     let input1 = "this apple is sweet".to_string();
     let input2 = "this apple is sour".to_string();
     let expected = vec!["sour".to_string(), "sweet".to_string()];
-    assert_eq!(expected, uncommon_from_sentences(input1, input2));
+    let mut ordered_output = uncommon_from_sentences(input1, input2);
+    ordered_output.sort();
+    assert_eq!(expected, ordered_output);
 }
 
 #[test]
