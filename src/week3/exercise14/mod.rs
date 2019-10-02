@@ -15,8 +15,8 @@ fn check_pattern(i: usize, j: usize, s: &str, p: &str, mem_results: &mut HashMap
     if j == p.len() {
         result = i == s.len();
     } else {
-        let first_check = i < s.len() && (&p[j..j+1] == &s[i..i+1] || &p[j..j+1] == ".");
-        if j + 1 < p.len() && &p[j+1..j+2] == "*" {
+        let first_check = i < s.len() && (p[j..=j] == s[i..=i] || &p[j..=j] == ".");
+        if j + 1 < p.len() && &p[j+1..=j+1] == "*" {
             result = check_pattern(i, j + 2, s, p, mem_results) || (first_check && check_pattern(i + 1, j, s, p, mem_results));
         } else {
             result = first_check && check_pattern(i + 1, j + 1, s, p, mem_results);
