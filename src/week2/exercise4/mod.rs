@@ -12,7 +12,7 @@ pub fn uncommon_from_sentences(a: String, b: String) -> Vec<String> {
 }
 
 fn uncommon_words(map: &HashMap<String, i32>) -> Vec<String> {
-    map.into_iter()
+    map.iter()
         .filter(|(_, val)| **val == 1)
         .map(|(key, _)| key.to_string())
         .collect::<Vec<String>>()
