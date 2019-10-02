@@ -135,3 +135,59 @@ fn test_week3_exercise14_example17() {
     let expected = true;
     assert_eq!(expected, is_match(s, p));
 }
+
+#[test]
+fn test_week3_exercise14_example18() {
+    let s = "aab".to_owned();
+    let p = "a*c*b".to_owned();
+    let expected = true;
+    assert_eq!(expected, is_match(s, p));
+}
+
+#[test]
+fn test_week3_exercise14_example19() {
+    let s = "aasdfasdfasdfasdfas".to_owned();
+    let p = "aasdf.*asdf.*asdf.*asdf.*s".to_owned();
+    let expected = true;
+    assert_eq!(expected, is_match(s, p));
+}
+
+#[test]
+fn test_week3_exercise14_example20() {
+    let s = "".to_owned();
+    let p = "c*c*".to_owned();
+    let expected = true;
+    assert_eq!(expected, is_match(s, p));
+}
+
+#[test]
+fn test_week3_exercise14_example21() {
+    let s = "ab".to_owned();
+    let p = ".*b*".to_owned();
+    let expected = true;
+    assert_eq!(expected, is_match(s, p));
+}
+
+#[test]
+fn test_week3_exercise14_example22() {
+    let s = "a".to_owned();
+    let p = ".*..".to_owned();
+    let expected = false;
+    assert_eq!(expected, is_match(s, p));
+}
+
+#[test]
+fn test_week3_exercise14_example23() {
+    let s = "a".to_owned();
+    let p = "b*.c".to_owned();
+    let expected = false;
+    assert_eq!(expected, is_match(s, p));
+}
+
+#[test]
+fn test_week3_exercise14_example24() {
+    let s = "abbabaaaaaaacaa".to_owned();
+    let p = "a*.*b.a.*c*b*a*c*".to_owned();
+    let expected = true;
+    assert_eq!(expected, is_match(s, p));
+}
