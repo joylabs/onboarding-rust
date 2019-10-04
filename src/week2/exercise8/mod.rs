@@ -22,13 +22,7 @@ fn check_col(board: &Vec<Vec<char>>) -> bool {
 
 fn check_box(board: &Vec<Vec<char>>) -> bool {
     (0..9).all(|i| {
-        let sub_box = build_box(
-            board,
-            (i / 3) * 3,
-            (1 + i / 3) * 3,
-            (i % 3) * 3,
-            (1 + i % 3) * 3,
-        );
+        let sub_box = build_box(board, i, (1 + i / 3) * 3, (i % 3) * 3, (1 + i % 3) * 3);
         has_unique_elements(sub_box)
     })
 }
@@ -41,11 +35,9 @@ fn build_box(
     col_end: i32,
 ) -> Vec<char> {
     let mut sub_box = Vec::<char>::new();
-    for row in row_start..row_end {
-        for col in col_start..col_end {
-            sub_box.push(board[row as usize][col as usize]);
-        }
-    }
+    (row_start..row_end).for_each(|row| {
+        (col_start..col_end).for_each(|col| sub_box.push(board[row as usize][col as usize]))
+    });
     sub_box
 }
 
