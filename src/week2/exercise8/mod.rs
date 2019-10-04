@@ -4,11 +4,11 @@ pub fn is_valid_sudoku(board: Vec<Vec<char>>) -> bool {
     check_row(&board) && check_col(&board) && check_box(&board)
 }
 
-fn check_row(board: &Vec<Vec<char>>) -> bool {
+fn check_row(board: &[Vec<char>]) -> bool {
     board.iter().all(|row| has_unique_elements(row.to_vec()))
 }
 
-fn check_col(board: &Vec<Vec<char>>) -> bool {
+fn check_col(board: &[Vec<char>]) -> bool {
     (0..9).all(|col| {
         let all_num = (0..9)
             .fold(&mut Vec::new(), |acc, row| {
@@ -20,7 +20,7 @@ fn check_col(board: &Vec<Vec<char>>) -> bool {
     })
 }
 
-fn check_box(board: &Vec<Vec<char>>) -> bool {
+fn check_box(board: &[Vec<char>]) -> bool {
     (0..9).all(|i| {
         let sub_box = build_box(board, i, (1 + i / 3) * 3, (i % 3) * 3, (1 + i % 3) * 3);
         has_unique_elements(sub_box)
@@ -28,7 +28,7 @@ fn check_box(board: &Vec<Vec<char>>) -> bool {
 }
 
 fn build_box(
-    board: &Vec<Vec<char>>,
+    board: &[Vec<char>],
     row_start: i32,
     row_end: i32,
     col_start: i32,
