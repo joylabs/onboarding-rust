@@ -7,7 +7,7 @@ pub fn word_pattern(pattern: String, words: String) -> bool {
         && build_map_words(&words, &pattern)
 }
 
-fn build_map_pattern(keys: &Vec<char>, values: &Vec<&str>) -> bool {
+fn build_map_pattern(keys: &[char], values: &[&str]) -> bool {
     let mut map: HashMap<char, &str> = HashMap::new();
     keys.iter().zip(values.iter()).all(|(k, v)| {
         if map.get(&k) == None {
@@ -19,7 +19,7 @@ fn build_map_pattern(keys: &Vec<char>, values: &Vec<&str>) -> bool {
     })
 }
 
-fn build_map_words(keys: &Vec<&str>, values: &Vec<char>) -> bool {
+fn build_map_words(keys: &[&str], values: &[char]) -> bool {
     let mut map: HashMap<&str, char> = HashMap::new();
     keys.iter().zip(values.iter()).all(|(k, v)| {
         if map.get(*k) == None {
