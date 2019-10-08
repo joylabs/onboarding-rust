@@ -43,10 +43,10 @@ fn build_box(
 
 fn has_unique_elements(vec: Vec<char>) -> bool {
     let vec = &vec;
-    let baseline_lenght = vec.into_iter().filter(|c| **c != '.').count();
+    let baseline_lenght = vec.iter().filter(|c| **c != '.').count();
 
     let uniq = vec
-        .into_iter()
+        .iter()
         .filter(|c| **c != '.')
         .fold(&mut HashSet::new(), |acc, c| {
             acc.insert(c);
