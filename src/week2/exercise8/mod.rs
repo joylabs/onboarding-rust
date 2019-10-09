@@ -35,9 +35,9 @@ fn build_box(
     col_end: i32,
 ) -> Vec<char> {
     let mut sub_box = Vec::<char>::new();
-    (row_start..row_end).for_each(|row| {
-        (col_start..col_end).for_each(|col| sub_box.push(board[row as usize][col as usize]))
-    });
+    for (i, j) in iproduct!(row_start..row_end, col_start..col_end) {
+        sub_box.push(board[i as usize][j as usize]);
+    }
     sub_box
 }
 
