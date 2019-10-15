@@ -51,3 +51,12 @@ fn test_week2_exercise13_example6() {
 
     assert_eq!(expected, find_anagrams(input_s, input_p));
 }
+
+#[test]
+fn test_week2_exercise13_example7() {
+    let input_s = "".to_string();
+    let input_p = "a".to_string();
+    let expected: Vec<i32> = vec![];
+
+    assert_eq!(expected, find_anagrams(input_s, input_p));
+}
