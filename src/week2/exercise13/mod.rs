@@ -23,7 +23,7 @@ pub fn find_anagrams(s: String, p: String) -> Vec<i32> {
     })
 }
 
-fn is_anagram(arr: &Vec<i32>, arr1: &Vec<i32>) -> bool {
+fn is_anagram(arr: &[i32], arr1: &[i32]) -> bool {
     arr == arr1
 }
 
