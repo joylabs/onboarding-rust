@@ -72,6 +72,15 @@ fn test_week3_exercise15_example8() {
     assert_eq!(convert_to_i32(expected), convert_to_i32(result));
 }
 
+#[test]
+fn test_week3_exercise15_example9() {
+    let x = 2.0;
+    let n = -2147483648; // minimun value possible for i32
+    let expected: f64 = 0.0;
+    let result = my_pow(x, n);
+    assert_eq!(convert_to_i32(expected), convert_to_i32(result));
+}
+
 //Using 5 decimal precision
 fn convert_to_i32(x: f64) -> i32 {
     let base = (10.0 as f64).powi(5);

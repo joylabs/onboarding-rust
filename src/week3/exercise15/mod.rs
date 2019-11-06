@@ -1,10 +1,25 @@
 pub fn my_pow(x: f64, n: i32) -> f64 {
-    let is_odd = n.abs() % 2 != 0;
     let is_neg = n < 0;
-    let mut val = pow_to_n(x * x, (n / 2).abs());
+    let mut power = n;
+    let mut base = x;
+    let mut val = 1.0;
 
-    if is_odd {
-        val *= x;
+    while power != 0 {
+        if power % 2 == 0 {
+            power /= 2;
+            base *= base;
+        } else {
+            if is_neg {
+                power += 1;
+            } else {
+                power -= 1;  
+            }
+            
+            val = val * base;
+
+            power /= 2;
+            base *= base;
+        }
     }
 
     if is_neg {
@@ -12,18 +27,6 @@ pub fn my_pow(x: f64, n: i32) -> f64 {
     }
 
     trunc_to_five_decimal_precision(val)
-}
-
-fn pow_to_n(base: f64, n: i32) -> f64 {
-    if n == 0 {
-        1.0
-    } else if (n % 2) == 0 {
-        let val = pow_to_n(base, n / 2);
-        val * val
-    } else {
-        let val = pow_to_n(base, n / 2);
-        val * val * base
-    } 
 }
 
 fn trunc_to_five_decimal_precision(x: f64) -> f64 {
