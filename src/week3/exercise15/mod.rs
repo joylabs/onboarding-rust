@@ -12,10 +12,10 @@ pub fn my_pow(x: f64, n: i32) -> f64 {
             if is_neg {
                 power += 1;
             } else {
-                power -= 1;  
+                power -= 1;
             }
-            
-            val = val * base;
+
+            val *= base;
 
             power /= 2;
             base *= base;
