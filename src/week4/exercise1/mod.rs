@@ -5,23 +5,16 @@ pub struct ListNode {
     pub next: Option<Box<ListNode>>,
 }
 
-impl ListNode {
-    #[inline]
-    fn new(val: i32) -> Self {
-        ListNode { val, next: None }
-    }
-}
-
 pub fn reverse_list(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
     let mut previous: Option<Box<ListNode>> = None;
     let mut current = head;
 
     while current.is_some() {
-      let mut node = current.unwrap(); 
-      let following = node.next;
-      node.next = previous;
-      previous = Some(node);
-      current = following;
+        let mut node = current.unwrap();
+        let following = node.next;
+        node.next = previous;
+        previous = Some(node);
+        current = following;
     }
 
     previous
