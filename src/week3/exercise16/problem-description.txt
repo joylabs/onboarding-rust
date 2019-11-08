@@ -1,0 +1,15 @@
+Reverse Linked List
+
+Problem description 
+
+Use `joylabs/onboarding-rust` to work on your personal branch to solve the following problem.
+
+Reverse a singly linked list.[`Link to the problem`](https://leetcode.com/problems/reverse-linked-list/)
+
+Acceptance Criteria
+
+Example:
+
+Input: 1->2->3->4->5->NULLOutput: 5->4->3->2->1->NULLFollow up:
+
+A linked list can be reversed either iteratively or recursively. Could you implement both?
