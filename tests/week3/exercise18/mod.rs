@@ -27,3 +27,10 @@ fn test_week3_exercise18_example4() {
     let expected = 1;
     assert_eq!(expected, rob(input));
 }
+
+#[test]
+fn test_week3_exercise18_example5() {
+    let input = vec![2, 7, 9, 3, 1];
+    let expected = 11;
+    assert_eq!(expected, rob(input));
+}
