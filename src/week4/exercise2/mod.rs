@@ -6,17 +6,28 @@ pub struct ListNode {
 }
 
 pub fn reverse_between(head: Option<Box<ListNode>>, m: i32, n: i32) -> Option<Box<ListNode>> {
-    // let mut previous: Option<Box<ListNode>> = None;
-    // let mut current = head;
+    let mut previous = head.clone();
+    let mut current = head.unwrap().next;
+    let mut current_position = 1;
 
-    // while current.is_some() {
-    //     let mut node = current.unwrap();
-    //     let following = node.next;
-    //     node.next = previous;
-    //     previous = Some(node);
-    //     current = following;
-    // }
+    while current.is_some() {
+        if current_position >= m && current_position < n {
+            let mut node = current.unwrap();
+            let following = node.next;
+            node.next = previous;
+            previous = Some(node);
+            current = following;
+            println!("current_position >= m");
+        } else {
+            let node = current.unwrap();
+            let following = node.next.clone();
+            previous = Some(node);
+            current = following;
+        }
 
-    // previous
-    unimplemented!()
+        current_position += 1;
+        println!("--> prev: {:?}", previous.clone());
+    }
+    
+    previous
 }
