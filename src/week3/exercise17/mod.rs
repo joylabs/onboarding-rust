@@ -10,7 +10,7 @@ pub fn reverse_between(head: Option<Box<ListNode>>, m: i32, mut n: i32) -> Optio
     let mut i = 1;
     let dummy: Option<Box<ListNode>> = None;
 
-    if !head.is_some() {
+    if head.is_none() {
         return dummy;
     }
 
