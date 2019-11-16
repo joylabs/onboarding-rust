@@ -14,7 +14,7 @@ git --version
 git clone SSH_link
 ```
 
-4.- Check repository branches and in wich one you are:
+4.- Check repository branches and in which one you are:
 ```
 git branch
 ```
@@ -24,12 +24,12 @@ git branch
 git checkout -b your_name
 ```
 
-6.- Create and move to a new branch for your exercice:
+6.- Create and move to a new branch for your exercise:
 ```
 git checkout -b your_name-e1
 ```
 
-7.- Solve your exercice, follow the structure of the folders and 
+7.- Solve your exercise, follow the structure of the folders and 
 *To run the test navigate to that days submission and run*
 
 ```
@@ -65,9 +65,3 @@ git push origin name_of_the_branch
 ### Resources
 
   - [Git tutorial](https://learngitbranching.js.org)
-
-  - [Cool terminal configuaration (Optional)](https://medium.com/the-code-review/make-your-terminal-more-colourful-and-productive-with-iterm2-and-zsh-11b91607b98c)
-
-
-
-
