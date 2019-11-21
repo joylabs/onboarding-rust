@@ -15,6 +15,7 @@ fn test_exercise18_frequency_sort_cccaaa() {
 }
 
 #[test]
+#[allow(non_snake_case)]
 fn test_exercise18_frequency_sort_Aabb() {
     let input = "Aabb".to_string();
     let expected = "bbAa".to_string();
