@@ -4,16 +4,9 @@ pub struct ListNode {
     pub val: i32,
     pub next: Option<Box<ListNode>>,
 }
-impl ListNode {
-    #[inline]
-    fn new(val: i32) -> Self {
-        ListNode { next: None, val }
-    }
-}
 
 pub fn odd_even_list(mut head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
     let dummy: Option<Box<ListNode>> = None;
-    let mut previous: Option<Box<ListNode>> = None;
     if head.is_none() {
         return dummy;
     }
