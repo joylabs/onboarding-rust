@@ -53,7 +53,6 @@ fn to_vec(formula: String) -> Vec<String> {
             // Push first what we have in the handle
             if handle != "" {
                 formula_vec.push(handle);
-                handle = String::new();
             }
             handle = c.to_string();
             waiting = false;

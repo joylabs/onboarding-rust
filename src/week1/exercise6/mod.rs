@@ -1,5 +1,5 @@
 pub fn plus_one(input: Vec<i32>) -> Vec<i32> {
-    let mut output: Vec<i32> = input.clone();
+    let mut output: Vec<i32> = input;
     for number in output.iter_mut().rev() {
         if *number < 9 {
             *number += 1;
