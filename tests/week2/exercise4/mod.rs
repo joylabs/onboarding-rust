@@ -1,7 +1,7 @@
 use onboarding_rust::week2::exercise4::uncommon_sentences_words;
 
 #[test]
-fn test_week2_exercise8_example1() {
+fn test_week2_exercise4_example1() {
     let input_a = "this apple is sweet".to_string();
     let input_b = "this apple is sour".to_string();
 
@@ -11,7 +11,7 @@ fn test_week2_exercise8_example1() {
 }
 
 #[test]
-fn test_week2_exercise8_example2() {
+fn test_week2_exercise4_example2() {
     let input_a = "apple apple".to_string();
     let input_b = "banana".to_string();
 
