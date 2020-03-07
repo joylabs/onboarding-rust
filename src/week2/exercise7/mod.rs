@@ -7,12 +7,6 @@ pub fn intersection(nums1: Vec<i32>, nums2: Vec<i32>) -> Vec<i32> {
     array1.dedup();
     array2.dedup();
 
-    // array1
-    //     .into_iter()
-    //     .map(|x| array2.iter().filter(|y| x == **y).map(|f| *f).collect::<Vec<i32>>())
-    //     .collect::<Vec<_>>()
-    //     .concat()
-
     array1
         .into_iter()
         .map(|x| {
@@ -24,7 +18,6 @@ pub fn intersection(nums1: Vec<i32>, nums2: Vec<i32>) -> Vec<i32> {
         })
         .collect::<Vec<_>>()
         .concat()
-
 }
 
 pub fn intersection_2(nums1: Vec<i32>, nums2: Vec<i32>) -> Vec<i32> {
